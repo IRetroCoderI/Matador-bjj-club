@@ -1,0 +1,280 @@
+/* NEW/CHANGE: Using Crimson Text as closest free alternative to CSUN's Apex Serif */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+* { /* targets every element on page */
+    /* resets default margins and padding */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Closest free match to Apex Serif */
+    display: flex;
+    justify-content: space-between; /* pushes items to opposite ends */
+    align-items: center; /* vertically centers the items */
+}
+
+.title .t1 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.33;
+    text-transform: none;
+    margin-bottom: -40px;
+}
+
+.title .t2 {
+    margin-top: 40px;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: -20px;
+    line-height: 1.14;
+}
+
+.title img {
+    align-self: center;
+}
+
+.header {
+    width: 100vw;
+    margin: 0 -2.5rem;
+    padding: 0 2.5rem;
+}
+
+.nav {
+    font-family: 'Apex Serif', Georgia, 'Times New Roman', serif;
+    padding-left: 2rem;
+    background-color: rgb(210, 32, 48);
+    color: white;
+    display: flex;
+    align-items: center;
+    list-style: none; /* removes list bulletpoints */
+    font-size: 1.125rem;
+    width: 100vw;
+    /* before changes*/
+    min-height: 100px;
+    align-items: stretch;
+    height: 5.25rem;
+    border-bottom: 0.0625rem solid rgb(190, 198, 195);
+    /* top right bottom left*/
+}
+
+.nav li {
+    color: inherit;
+    display: flex;
+    align-items: center;
+    position: relative; /* added for positioning the animated border */
+}
+
+.nav a {
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    font-size: 1.0625rem;
+    line-height: 1.2;
+    height: 100%;
+    margin: .5rem;
+    position: relative;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav a:hover::after {
+    width: 80%;
+}
+
+.nav a.active::after {
+    width: 80%;
+}
+
+/* NEW/CHANGE: Responsive main content instead of fixed margins */
+.main-content {
+    max-width: 1200px; /* NEW/CHANGE: Maximum width instead of fixed margins */
+    margin: 50px auto; /* NEW/CHANGE: Auto margins center the content */
+    padding: 0 2rem; /* NEW/CHANGE: Padding instead of fixed margins for mobile */
+    min-height: 500px;
+}
+
+/* NEW/CHANGE: Restore list styling after CSS reset */
+.main-content ul,
+.main-content ol {
+    margin: 1rem 0; /* Vertical spacing around lists */
+    padding-left: 2rem; /* Restore indentation */
+}
+
+.main-content li {
+    margin-bottom: 0.5rem; /* Space between list items */
+    line-height: 1.5;
+}
+
+/* NEW/CHANGE: Nested lists (your sub-bullets) */
+.main-content ul ul,
+.main-content ol ol {
+    margin: 0.5rem 0; /* Less margin for nested lists */
+    padding-left: 1.5rem; /* Less indentation for nested lists */
+}
+
+/* NEW/CHANGE: Better heading styles */
+.main-content h1 {
+    color: #d22030; /* CSUN red */
+    margin-bottom: 1.5rem;
+}
+
+.main-content h2 {
+    color: #d22030; /* CSUN red */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.main-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* NEW/CHANGE: Responsive table styling */
+table {
+    border: 2px solid black;
+    margin: 10px auto;
+    border-collapse: collapse;
+    width: 100%; /* NEW/CHANGE: Full width within container */
+    max-width: 100%; /* NEW/CHANGE: Prevents overflow */
+}
+
+table tr th {
+    border: 2px solid black;
+    background-color: rgb(210, 32, 48);
+    color: white;
+    padding: 15px 10px;
+    font-family: 'Apex Serif', Georgia, 'Times New Roman', serif;
+}
+
+table tr td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 20px 20px;
+    vertical-align: top; /* NEW/CHANGE: Align content to top */
+}
+
+.footer {
+    width: 100%; /* NEW/CHANGE: Full width instead of fixed 1600px */
+    height: 500px; /* NEW/CHANGE: Reduced from 800px for better proportion */
+    background-image: url(//live-csu-northridge.pantheonsite.io/sites/default/files/2022-06/HomepageFooter_1_1600x800-min.jpg);
+    background-size: cover; /* NEW/CHANGE: Ensures image covers entire footer */
+    background-position: center; /* NEW/CHANGE: Centers the background image */
+    background-repeat: no-repeat; /* NEW/CHANGE: Prevents image repetition */
+}
+
+.footer-content {
+    color: white;
+}
+
+/* NEW/CHANGE: Mobile responsive styles for tablets and small laptops */
+@media (max-width: 768px) {
+    .title {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .title img {
+        margin-top: 1rem;
+        max-width: 200px;
+    }
+    
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-left: 1rem;
+    }
+    
+    .nav a {
+        padding: 1rem 0.8rem;
+        font-size: 1rem;
+    }
+    
+    .main-content {
+        padding: 0 1rem; /* NEW/CHANGE: Less padding on smaller screens */
+        margin: 25px auto; /* NEW/CHANGE: Smaller top margin */
+    }
+    
+    table tr th,
+    table tr td {
+        padding: 10px 5px; /* NEW/CHANGE: Smaller padding on mobile */
+        font-size: 0.85rem; /* NEW/CHANGE: Smaller text on mobile */
+    }
+    
+    table tr td p {
+        margin-bottom: 0.25rem;
+        line-height: 1.3;
+    }
+    
+    .footer {
+        height: 400px;
+    }
+}
+
+/* NEW/CHANGE: Very small screens (phones) */
+@media (max-width: 480px) {
+    .title .t2 {
+        font-size: 2rem;
+    }
+    
+    .nav a {
+        padding: 0.8rem 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .main-content {
+        padding: 0 0.5rem; /* NEW/CHANGE: Even less padding on very small screens */
+        margin: 20px auto;
+    }
+    
+    .main-content h1 {
+        font-size: 1.5rem; /* NEW/CHANGE: Smaller headings on mobile */
+        margin-bottom: 1rem;
+    }
+    
+    .main-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    table tr th,
+    table tr td {
+        padding: 8px 3px; /* NEW/CHANGE: Very small padding on phones */
+        font-size: 0.7rem; /* NEW/CHANGE: Smaller text on phones */
+    }
+    
+    table tr td strong {
+        font-size: 0.75rem; /* NEW/CHANGE: Smaller bold text */
+        display: block;
+        margin-bottom: 2px;
+    }
+    
+    .footer {
+        height: 300px;
+    }
+}
