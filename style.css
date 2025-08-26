@@ -1,280 +1,328 @@
 /* NEW/CHANGE: Using Crimson Text as closest free alternative to CSUN's Apex Serif */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
-* { /* targets every element on page */
-    /* resets default margins and padding */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * { /* targets every element on page */
+            /* resets default margins and padding */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
 
-.title {
-    font-size: 2.5rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Closest free match to Apex Serif */
-    display: flex;
-    justify-content: space-between; /* pushes items to opposite ends */
-    align-items: center; /* vertically centers the items */
-}
+        .title {
+            font-size: 2.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.title .t1 {
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.33;
-    text-transform: none;
-    margin-bottom: -40px;
-}
+        .title .t1 {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.33;
+            text-transform: none;
+            margin-bottom: -40px;
+        }
 
-.title .t2 {
-    margin-top: 40px;
-    font-weight: 700;
-    font-size: 2.5rem;
-    margin-bottom: -20px;
-    line-height: 1.14;
-}
+        .title .t2 {
+            margin-top: 40px;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: -20px;
+            line-height: 1.14;
+        }
 
-.title img {
-    align-self: center;
-}
+        .title img {
+            align-self: center;
+            max-height: 80px;
+        }
 
-.header {
-    width: 100vw;
-    margin: 0 -2.5rem;
-    padding: 0 2.5rem;
-}
+        .header {
+            width: 100vw;
+            margin: 0 -2.5rem;
+            padding: 0 2.5rem;
+        }
 
-.nav {
-    font-family: 'Apex Serif', Georgia, 'Times New Roman', serif;
-    padding-left: 2rem;
-    background-color: rgb(210, 32, 48);
-    color: white;
-    display: flex;
-    align-items: center;
-    list-style: none; /* removes list bulletpoints */
-    font-size: 1.125rem;
-    width: 100vw;
-    /* before changes*/
-    min-height: 100px;
-    align-items: stretch;
-    height: 5.25rem;
-    border-bottom: 0.0625rem solid rgb(190, 198, 195);
-    /* top right bottom left*/
-}
+        /* NEW/CHANGE: Desktop-first navigation */
+        .nav {
+            font-family: 'Apex Serif', Georgia, 'Times New Roman', serif;
+            padding-left: 2rem;
+            background-color: rgb(210, 32, 48);
+            color: white;
+            display: flex;
+            align-items: center;
+            list-style: none;
+            font-size: 1.125rem;
+            width: 100vw;
+            height: 5.25rem;
+            border-bottom: 0.0625rem solid rgb(190, 198, 195);
+        }
 
-.nav li {
-    color: inherit;
-    display: flex;
-    align-items: center;
-    position: relative; /* added for positioning the animated border */
-}
+        .nav li {
+            color: inherit;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
 
-.nav a {
-    padding: 2rem 1rem;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    font-weight: 400;
-    font-size: 1.0625rem;
-    line-height: 1.2;
-    height: 100%;
-    margin: .5rem;
-    position: relative;
-}
+        .nav a {
+            padding: 2rem 1rem;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            text-align: center;
+            color: white;
+            font-weight: 400;
+            font-size: 1.0625rem;
+            line-height: 1.2;
+            height: 100%;
+            margin: .5rem;
+            position: relative;
+        }
 
-.nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    width: 0;
-    height: 3px;
-    background-color: white;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
 
-.nav a:hover::after {
-    width: 80%;
-}
+        .nav a:hover::after {
+            width: 80%;
+        }
 
-.nav a.active::after {
-    width: 80%;
-}
+        .nav a.active::after {
+            width: 80%;
+        }
 
-/* NEW/CHANGE: Responsive main content instead of fixed margins */
-.main-content {
-    max-width: 1200px; /* NEW/CHANGE: Maximum width instead of fixed margins */
-    margin: 50px auto; /* NEW/CHANGE: Auto margins center the content */
-    padding: 0 2rem; /* NEW/CHANGE: Padding instead of fixed margins for mobile */
-    min-height: 500px;
-}
+        .main-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 2rem;
+            min-height: 500px;
+        }
 
-/* NEW/CHANGE: Restore list styling after CSS reset */
-.main-content ul,
-.main-content ol {
-    margin: 1rem 0; /* Vertical spacing around lists */
-    padding-left: 2rem; /* Restore indentation */
-}
+        .main-content ul,
+        .main-content ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
 
-.main-content li {
-    margin-bottom: 0.5rem; /* Space between list items */
-    line-height: 1.5;
-}
+        .main-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
 
-/* NEW/CHANGE: Nested lists (your sub-bullets) */
-.main-content ul ul,
-.main-content ol ol {
-    margin: 0.5rem 0; /* Less margin for nested lists */
-    padding-left: 1.5rem; /* Less indentation for nested lists */
-}
+        .main-content h1 {
+            color: #d02030;
+            margin-bottom: 1.5rem;
+        }
 
-/* NEW/CHANGE: Better heading styles */
-.main-content h1 {
-    color: #d22030; /* CSUN red */
-    margin-bottom: 1.5rem;
-}
+        .main-content h2 {
+            color: #d02030;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
 
-.main-content h2 {
-    color: #d22030; /* CSUN red */
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
+        .main-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
 
-.main-content p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
+        /* NEW/CHANGE: Desktop table styling */
+        .desktop-table {
+            border: 2px solid black;
+            margin: 10px auto;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 100%;
+        }
 
-/* NEW/CHANGE: Responsive table styling */
-table {
-    border: 2px solid black;
-    margin: 10px auto;
-    border-collapse: collapse;
-    width: 100%; /* NEW/CHANGE: Full width within container */
-    max-width: 100%; /* NEW/CHANGE: Prevents overflow */
-}
+        .desktop-table tr th {
+            border: 2px solid black;
+            background-color: rgb(210, 32, 48);
+            color: white;
+            padding: 15px 10px;
+            font-family: 'Apex Serif', Georgia, 'Times New Roman', serif;
+        }
 
-table tr th {
-    border: 2px solid black;
-    background-color: rgb(210, 32, 48);
-    color: white;
-    padding: 15px 10px;
-    font-family: 'Apex Serif', Georgia, 'Times New Roman', serif;
-}
+        .desktop-table tr td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 20px 20px;
+            vertical-align: top;
+        }
 
-table tr td {
-    border: 1px solid black;
-    text-align: center;
-    padding: 20px 20px;
-    vertical-align: top; /* NEW/CHANGE: Align content to top */
-}
+        /* NEW/CHANGE: Mobile schedule cards - hidden by default */
+        .mobile-schedule {
+            display: none;
+        }
 
-.footer {
-    width: 100%; /* NEW/CHANGE: Full width instead of fixed 1600px */
-    height: 500px; /* NEW/CHANGE: Reduced from 800px for better proportion */
-    background-image: url(//live-csu-northridge.pantheonsite.io/sites/default/files/2022-06/HomepageFooter_1_1600x800-min.jpg);
-    background-size: cover; /* NEW/CHANGE: Ensures image covers entire footer */
-    background-position: center; /* NEW/CHANGE: Centers the background image */
-    background-repeat: no-repeat; /* NEW/CHANGE: Prevents image repetition */
-}
+        .schedule-day {
+            background: white;
+            border: 2px solid #d02030;
+            border-radius: 8px;
+            margin: 1rem 0;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-.footer-content {
-    color: white;
-}
+        .schedule-day h3 {
+            color: #d02030;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
 
-/* NEW/CHANGE: Mobile responsive styles for tablets and small laptops */
-@media (max-width: 768px) {
-    .title {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
-    }
-    
-    .title img {
-        margin-top: 1rem;
-        max-width: 200px;
-    }
-    
-    .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding-left: 1rem;
-    }
-    
-    .nav a {
-        padding: 1rem 0.8rem;
-        font-size: 1rem;
-    }
-    
-    .main-content {
-        padding: 0 1rem; /* NEW/CHANGE: Less padding on smaller screens */
-        margin: 25px auto; /* NEW/CHANGE: Smaller top margin */
-    }
-    
-    table tr th,
-    table tr td {
-        padding: 10px 5px; /* NEW/CHANGE: Smaller padding on mobile */
-        font-size: 0.85rem; /* NEW/CHANGE: Smaller text on mobile */
-    }
-    
-    table tr td p {
-        margin-bottom: 0.25rem;
-        line-height: 1.3;
-    }
-    
-    .footer {
-        height: 400px;
-    }
-}
+        .schedule-event {
+            margin: 0.75rem 0;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
 
-/* NEW/CHANGE: Very small screens (phones) */
-@media (max-width: 480px) {
-    .title .t2 {
-        font-size: 2rem;
-    }
-    
-    .nav a {
-        padding: 0.8rem 0.6rem;
-        font-size: 0.9rem;
-    }
-    
-    .main-content {
-        padding: 0 0.5rem; /* NEW/CHANGE: Even less padding on very small screens */
-        margin: 20px auto;
-    }
-    
-    .main-content h1 {
-        font-size: 1.5rem; /* NEW/CHANGE: Smaller headings on mobile */
-        margin-bottom: 1rem;
-    }
-    
-    .main-content p {
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-    }
-    
-    table tr th,
-    table tr td {
-        padding: 8px 3px; /* NEW/CHANGE: Very small padding on phones */
-        font-size: 0.7rem; /* NEW/CHANGE: Smaller text on phones */
-    }
-    
-    table tr td strong {
-        font-size: 0.75rem; /* NEW/CHANGE: Smaller bold text */
-        display: block;
-        margin-bottom: 2px;
-    }
-    
-    .footer {
-        height: 300px;
-    }
-}
+        .schedule-event strong {
+            display: block;
+            color: #d02030;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .schedule-event p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .no-events {
+            color: #999;
+            font-style: italic;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .footer {
+            width: 100%;
+            height: 500px;
+            background-image: url(//live-csu-northridge.pantheonsite.io/sites/default/files/2022-06/HomepageFooter_1_1600x800-min.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .footer-content {
+            color: white;
+        }
+
+        /* NEW/CHANGE: Tablet responsive styles */
+        @media (max-width: 768px) {
+            .title {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .title img {
+                margin-top: 1rem;
+                max-width: 150px;
+            }
+            
+            /* NEW/CHANGE: Mobile navigation - stacks vertically */
+            .nav {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem;
+                gap: 0.5rem;
+            }
+            
+            .nav li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav a {
+                width: 100%;
+                padding: 1rem;
+                margin: 0.25rem 0;
+                border-radius: 4px;
+                transition: background-color 0.3s ease;
+                font-size: 1rem;
+            }
+            
+            .nav a:hover,
+            .nav a.active {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+            
+            /* NEW/CHANGE: Hide bottom border animation on mobile, use background instead */
+            .nav a::after {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 0 1rem;
+                margin: 25px auto;
+            }
+            
+            /* NEW/CHANGE: Hide desktop table, show mobile schedule */
+            .desktop-table {
+                display: none;
+            }
+            
+            .mobile-schedule {
+                display: block;
+            }
+            
+            .footer {
+                height: 400px;
+            }
+        }
+
+        /* NEW/CHANGE: Phone responsive styles */
+        @media (max-width: 480px) {
+            .title .t1 {
+                font-size: 0.9rem;
+            }
+            
+            .title .t2 {
+                font-size: 1.8rem;
+            }
+            
+            .nav a {
+                font-size: 0.9rem;
+                padding: 0.875rem;
+            }
+            
+            .main-content {
+                padding: 0 0.5rem;
+                margin: 20px auto;
+            }
+            
+            .main-content h1 {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+            }
+            
+            .main-content p {
+                font-size: 0.9rem;
+            }
+            
+            .footer {
+                height: 300px;
+            }
+        }

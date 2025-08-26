@@ -10,13 +10,12 @@
 <body>
    
     <div class="title">
-        <!--TODO: with phone, have csun logo on top -->
         <div>
             <p class="t1">Sports Club:</p>
             <p class="t2">Brazilian Jiu-Jitsu</p>
         </div>
         
-        <a href=""><img src="csunLogo.svg"></a>
+        <a href=""><img src="csunLogo.svg" alt="CSUN Logo"></a>
     </div>
     <div class="header">
         <nav>
@@ -32,9 +31,11 @@
         </nav>
     </div>
     <div class="main-content">
-        <h1> Tentative Schedule </h1>
+        <h1>Tentative Schedule</h1>
         <p>Here is our current schedule. Subject to change. Last Updated Aug. 2025</p>
-        <table>
+        
+        <!-- NEW/CHANGE: Desktop table (hidden on mobile) -->
+        <table class="desktop-table">
             <tr>
                 <th>Sunday</th>
                 <th>Monday</th>
@@ -78,6 +79,65 @@
                 <td></td><td></td>
             </tr>
         </table>
+
+        <!-- NEW/CHANGE: Mobile-friendly schedule (hidden on desktop) -->
+        <div class="mobile-schedule">
+            <div class="schedule-day">
+                <h3>Sunday</h3>
+                <div class="schedule-event">
+                    <strong>Open Mat @ Forge</strong>
+                    <p>12:00pm - 2:00pm</p>
+                </div>
+            </div>
+            
+            <div class="schedule-day">
+                <h3>Monday</h3>
+                <div class="no-events">No classes scheduled</div>
+            </div>
+            
+            <div class="schedule-day">
+                <h3>Tuesday</h3>
+                <div class="schedule-event">
+                    <strong>Fundamentals Class</strong>
+                    <p>5:45pm - 7:45pm</p>
+                </div>
+                <div class="schedule-event">
+                    <strong>Competition Class</strong>
+                    <p>8:00pm - 9:45pm</p>
+                </div>
+            </div>
+            
+            <div class="schedule-day">
+                <h3>Wednesday</h3>
+                <div class="no-events">No classes scheduled</div>
+            </div>
+            
+            <div class="schedule-day">
+                <h3>Thursday</h3>
+                <div class="schedule-event">
+                    <strong>Fundamentals Class</strong>
+                    <p>5:45pm - 7:45pm</p>
+                </div>
+                <div class="schedule-event">
+                    <strong>Competition Class</strong>
+                    <p>8:00pm - 9:45pm</p>
+                </div>
+            </div>
+            
+            <div class="schedule-day">
+                <h3>Friday</h3>
+                <div class="schedule-event">
+                    <strong>All-Levels Class</strong>
+                    <p>4:30pm - 6:30pm</p>
+                </div>
+            </div>
+            
+            <div class="schedule-day">
+                <h3>Saturday</h3>
+                <div class="no-events">No classes scheduled</div>
+            </div>
+        </div>
+
         <h1>Location</h1>
         <ul>
             <li>Building: Redwood Hall</li>
