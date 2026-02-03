@@ -228,12 +228,74 @@
             color: white;
         }
 
+        /* Mobile Top Bar - MUST BE BEFORE MEDIA QUERIES */
+        .mobile-top-bar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4rem;
+            background-color: rgb(210, 32, 48);
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Hamburger Menu Button - MUST BE BEFORE MEDIA QUERIES */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 2rem;
+            height: 2rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            position: fixed;
+            top: 1rem;
+            left: 1.5rem;
+        }
+
+        .hamburger span {
+            width: 2rem;
+            height: 0.25rem;
+            background: white;
+            border-radius: 10px;
+            transition: all 0.3s linear;
+            position: relative;
+            transform-origin: 1px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
         /* NEW/CHANGE: Tablet responsive styles */
         @media (max-width: 768px) {
+            .mobile-top-bar {
+                display: block;
+            }
+
+            body {
+                padding-top: 4rem;
+            }
+
             .title {
                 flex-direction: column;
                 text-align: center;
                 padding: 1rem;
+                margin-top: 0;
                 margin-bottom: 1rem;
             }
             
@@ -241,27 +303,47 @@
                 margin-top: 1rem;
                 max-width: 150px;
             }
+
+            .hamburger {
+                display: flex;
+            }
             
             /* NEW/CHANGE: Mobile navigation - stacks vertically */
             .nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 400px;
                 flex-direction: column;
-                height: auto;
-                padding: 1rem;
-                gap: 0.5rem;
+                padding: 5rem 2rem 2rem 2rem;
+                gap: 0;
+                background-color: rgb(210, 32, 48);
+                transition: left 0.3s ease-in-out;
+                overflow-y: auto;
+                z-index: 999;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+            }
+
+            .nav.active { /* show nav when active */
+                left: 0;
             }
             
             .nav li {
                 width: 100%;
-                text-align: center;
+                text-align: left;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
             
             .nav a {
                 width: 100%;
-                padding: 1rem;
-                margin: 0.25rem 0;
-                border-radius: 4px;
+                padding: 1.25rem 1rem;
+                margin: 0;
+                border-radius: 0;
                 transition: background-color 0.3s ease;
-                font-size: 1rem;
+                font-size: 1.1rem;
+                justify-content: flex-start;
             }
             
             .nav a:hover,
