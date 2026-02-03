@@ -3,134 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST PAGE</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/svg+xml" href="FreeSample-Vectorizer-io-White and Red-cropped.svg" size="128x128">
+    <title>CSUN x Forge Collaboration</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .collaboration-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            padding: 2rem;
+        }
+
+        .logo {
+            width: 300px;
+            height: auto;
+            display: block;
+        }
+
+        .collaboration-x {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .collaboration-container {
+                gap: 2rem;
+            }
+
+            .logo {
+                width: 200px;
+            }
+
+            .collaboration-x {
+                font-size: 3rem;
+            }
+        }
+    </style>
 </head>
 <body>
-   
-    <div class="title">
-        <!--TODO: with phone, have csun logo on top -->
-        <div>
-            <p class="t1">Sports Club:</p>
-            <p class="t2">Brazilian Jiu-Jitsu</p>
-        </div>
+    <div class="collaboration-container">
+        <img src="White and Red.png" alt="CSUN Jiu-Jitsu Logo" class="logo">
         
-        <a href=""><img src="csunLogo.svg"></a>
+        <div class="collaboration-x">×</div>
+        
+        <img src="forge fix b5.png" alt="Forge Brazilian Jiu-Jitsu Logo" class="logo">
     </div>
-    <div class="header">
-        <nav>
-            <ul class="nav">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./aboutus.html">About Us</a></li>
-                <li><a href="./meettheofficers.html">Meet the Team</a></li>
-                <li><a href="./gettingstarted.html">Getting Started</a></li>
-                <li><a href="./howtojoin.html" class="active">How to Join</a></li>
-                <li><a href="./schedule.html">Schedule & Location</a></li>
-                <li><a href="./contactus.html">Contact Us</a></li>
-                
-            </ul>
-        </nav>
-    </div>
-
-    <div class="main-content">
-        <!--
-        <h1>Risk X</h1>
-        <p>Home to the required documents and forms!</p>
-        <ul>
-            <li>Tryout requirement documents</li>
-            <li>Participant requirement documents</li>
-            <li>Drivers requirements</li>
-        </ul>
-        -->
-        <h1>How To Join</h1>
-        <p>We are so happy to hear you are interested in joining our club, and are excited to learn the gentle art of Brazilian Jiu-Jitsu! Below are the steps you need to follow in order to join. (if you are returning, welcome back! All you have to do is complete the Returners Paperwork and turn it into the AT clinic)</p>
-        <h1>Registration Process</h1>
-        <h3>To Attend Tryouts</h3>
-        <ul>
-            <li><a href="https://csun.cfmnetwork.com/saml/csun.saml" target="_blank">Login to Risk-X</a>  with your CSUN credentials.</li>
-            <li>Forms are to be filled out on Risk X</li>
-            <li>All forms are required to attend any sport clubs tryout or practice.
-                <ul>
-                    <li>Waiver</li>
-                    <li>Emergency Contact Card</li>
-                    <li>Code of Conduct (Sports Clubs and California)</li>
-                    <li>Academic Release</li>
-                    <li>PREP <strong style="color: red">(Done once in a college career)</strong></li>
-                </ul>
-            </li>
-            <li>The forms are <strong>updated live time</strong>, so you can fill them out at the door of tryouts/practice if you haven't yet, and you will still be cleared to participate!</li>
-        </ul>
-        <h3>Additional Registration Steps</h3>
-        <strong><p style="color: red; padding-top:10px; padding-left: 10px;">
-            To be a fully Rostered Participant, you will need to complete the following paperwork.
-        </p></strong>
-        <ul>
-            <li>Medical Paperwork
-                <ul>
-                    <li>New Participant/Returners Medical Paperwork</li>
-                    <li>Physical/EKG</li>
-                    <li>Baseline Concussion Test</li>
-                </ul>
-            </li>
-            <li>Sports Clubs 101 - done once in a college career.</li>
-
-        </ul>
-        <h2>Medical Paperwork: Returning vs. New Players</h2>
-        <p>Medical Paperwork Forms:</p>
-        <ul>
-            <li><a href="https://live-csu-northridge.pantheonsite.io/sites/default/files/2025-07/New%20Participant%20Paperwork%2025-26.pdf" target="_blank">New Participant Medical Forms</a></li>
-            <li><a href="https://live-csu-northridge.pantheonsite.io/sites/default/files/2025-07/Returning%20Participant%20Paperwork%2025-26.pdf" target="_blank">Returning Participant Medical Forms</a></li>
-        </ul>
-        <ul>
-            <li>Print and fill out properly with blue or black pen and <strong style="text-decoration: underline;">personally</strong> turn it into the <a href="#" target="https://www.csun.edu/as/departments/sport-clubs/athletic-training">Athletic Training Clinic</a>.</li>
-            <ul><li><strong style="color: red;">You may NOT turn in paperwork for another student.</strong></li></ul>
-            <li>Medical paperwork must be turned in before taking a baseline concussion test, scheduling a physical, and use of Sports Clubs facilities.</li>
-        </ul>
-        <h3>Baseline Concussion Testing</h3>
-        <ul>
-            <li>Baseline concussion tests are conducted in the Athletic Training clinic.</li>
-            <li>About 30-40 minutes.</li>
-            <li>No appointment, walk-in basis, but you may have to wait if other students are waiting ahead of you.</li>
-        </ul>
-        <h3>Physicals</h3>
-        <ul>
-            <li>Students have two options for Physicals:
-                <ol>
-                    <li>They may go to their own physician or an Urgent Care office (recommended):
-                        <ul>
-                            <li>Need to take physical form included in the <strong>New Participant paperwork packet.</strong></li>
-                            <li>Must get an EKG and bring a <strong>printed copy of the EKG results</strong>, along with the Physical form provided to you in the New participant paperwork packet, completed by a physician.</li>
-                        </ul>
-                    </li>
-                    <li>Or they may go to the <a href="https://www.google.com/maps/dir//Klotz+Student+Health+Center,+18111+Nordhoff+Street,+,+91330,+Northridge,+CA+91325/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x80c29a56bbbee2b5:0x88cdeafb0572e791?sa=X&ved=1t:707&ictx=111" target="_blank">Klotz Student Health Center</a></li>
-                    <ul>
-                        <li>Schedule an appointment with the Athletic Training staff in person.</li>
-                        <li>Appointments for physicals <strong>cannot be made by calling</strong> the clinic, and <strong style="color: red;">cannot be made by calling Klotz</strong> either.</li>
-                        
-                        <li style="list-style-type: none;">
-                            <details>
-                                <summary>Click Here for available Klotz Physical Dates</summary>
-                            
-                            <ul><li>8:00am - 12:00pm
-                                <ul>
-                                    <li>September 8</li>
-                                    <li>September 15</li>
-                                    <li>September 22</li>
-                                    <li>September 29</li>
-                                </ul>
-                            </li></ul></details>
-                        </li>
-                    </ul>
-                </ol>
-            </li>
-        </ul>
-    </div>
-    
-    <hr>
-    <footer class="footer">
-        <div class="footer-content">
-        </div>
-    </footer>
 </body>
 </html>

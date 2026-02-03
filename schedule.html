@@ -7,6 +7,50 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="FreeSample-Vectorizer-io-White and Red-cropped.svg" size="128x128">
 </head>
+<style>
+
+    @media (max-width: 768px) {
+        .collaboration-container {
+            gap: 2rem;
+        }
+
+        .logo {
+            width: 200px;
+        }
+
+        .collaboration-x {
+            font-size: 3rem;
+        }
+    }
+
+    .collaboration-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .logo {
+        width: 300px;
+        height: auto;
+        display: block;
+    }
+
+    .collaboration-x {
+        font-size: 4rem;
+        font-weight: 700;
+        color: #000000;
+    }
+    
+    .forge {
+        background-color: rgba(255, 204, 51, .3);
+    }
+
+    .csun {
+        background-color: rgba(210, 32, 48, .3);
+    }
+
+</style>
 <body>
     <div class="mobile-top-bar"></div> <!-- adding a new hamburger menu for mobile users -->
    
@@ -40,9 +84,16 @@
             </ul>
         </nav>
     </div>
+    <div class="collaboration-container">
+        <img src="White and Red.png" alt="CSUN Jiu-Jitsu Logo" class="logo">
+        
+        <div class="collaboration-x">×</div>
+        
+        <img src="forge fix b5.png" alt="Forge Brazilian Jiu-Jitsu Logo" class="logo">
+    </div>
     <div class="main-content">
-        <h1>Tentative Schedule</h1>
-        <p>Here is our current schedule. Subject to change. Last Updated Jan. 2026</p>
+        <h1>Schedule</h1>
+        <p>Current Schedule as of Feb. 2026</p>
         
         <!-- NEW/CHANGE: Desktop table (hidden on mobile) -->
         <table class="desktop-table">
@@ -56,43 +107,43 @@
                 <th>Saturday</th>
             </tr>
             <tr>
-                <td>
+                <td class="forge">
                     <p><strong>Open Mat @ <a href="https://www.google.com/maps/dir//Forge+Brazilian+Jiujitsu+Academy,+7900+Balboa+Blvd+Ste+1,+Van+Nuys,+CA+91406/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x80c29b0f32ce3209:0x7d2efa1819753c96?sa=X&ved=1t:57443&ictx=111" target="_blank">Forge</a></strong></p>
                     <p>12:00pm - 2:00pm</p>
                 </td>
-                <td>
+                <td class="forge">
                     <p><strong>Matador Jiu-Jitsu @Forge</strong></p>
                     <p>7:45pm - 9:45pm</p>
                 </td>
-                <td>
+                <td class="csun">
                     <p><strong>Fundamentals Class</strong></p>
                     <p>5:45pm - 7:45pm</p>
                 </td>
-                <td>
+                <td class="forge">
                     <p><strong>Matador Jiu-Jitsu @Forge</strong></p>
                     <p>7:45pm - 9:45pm</p>
                 </td>
-                <td>
+                <td class="csun">
                     <p><strong>Fundamentals Class</strong></p>
                     <p>5:45pm - 7:45pm</p>
                 </td>
-                <td>
+                <td class="csun">
                     <p><strong>All-Levels Class</strong></p>
                     <p>4:30pm - 6:30pm</p>
                 </td>
-                <td>
+                <td class="forge">
                     <p><strong>Forge Competition Class</strong></p>
                     <p>8:00am - 10:00am</p>
                 </td>
             </tr>
             <tr>
                 <td></td><td></td>
-                <td>
+                <td class="csun">
                     <p><strong>Competition Class</strong></p>
                     <p>8:00pm - 9:45pm</p>
                 </td>
                 <td></td>
-                <td>
+                <td class="csun">
                     <p><strong>Competition Class</strong></p>
                     <p>8:00pm - 9:45pm</p>
                 </td>
@@ -159,10 +210,12 @@
         </div>
 
         <h1>Location</h1>
-        <ul>
-            <li>Building: Redwood Hall</li>
-            <li>Room number: RE 251</li>
-        </ul>
+        <table class="desktop-table">
+            <tr>
+                <td class="csun">CSUN Campus, Redwood Hall, RE 251</td>
+                <td class="forge">Forge Brazilian Jiujitsu Academy 7900 Balboa Blvd., Delta #4 Van Nuys, CA 91406</td>
+            </tr>
+        </table>
     </div>
     <footer class="footer">
         <div class="footer-content">
