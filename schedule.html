@@ -8,32 +8,19 @@
     <link rel="icon" type="image/svg+xml" href="FreeSample-Vectorizer-io-White and Red-cropped.svg" size="128x128">
 </head>
 <style>
-
-    @media (max-width: 768px) {
-        .collaboration-container {
-            gap: 2rem;
-        }
-
-        .logo {
-            width: 200px;
-        }
-
-        .collaboration-x {
-            font-size: 3rem;
-        }
-    }
-
     .collaboration-container {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 2rem;
+        padding: 1rem;
     }
 
     .logo {
         width: 300px;
         height: auto;
         display: block;
+        max-width: 100%;
     }
 
     .collaboration-x {
@@ -50,6 +37,36 @@
         background-color: rgba(210, 32, 48, .3);
     }
 
+    /* Tablet sizing */
+    @media (max-width: 768px) {
+        .collaboration-container {
+            gap: 1.5rem;
+        }
+
+        .logo {
+            width: 150px;
+        }
+
+        .collaboration-x {
+            font-size: 2.5rem;
+        }
+    }
+
+    /* Mobile phone sizing */
+    @media (max-width: 480px) {
+        .collaboration-container {
+            gap: 1rem;
+            padding: 0.5rem;
+        }
+
+        .logo {
+            width: 100px;
+        }
+
+        .collaboration-x {
+            font-size: 1.8rem;
+        }
+    }
 </style>
 <body>
     <div class="mobile-top-bar"></div> <!-- adding a new hamburger menu for mobile users -->
@@ -249,15 +266,10 @@
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('nav');
 
-    console.log('Hamburger:', hamburger); // Debug
-    console.log('Nav:', nav); // Debug
-
     if (hamburger && nav) {
         hamburger.addEventListener('click', function() {
-            console.log('Hamburger clicked!'); // Debug
             this.classList.toggle('active');
             nav.classList.toggle('active');
-            console.log('Nav classes:', nav.classList); // Debug
         });
 
         // Close menu when clicking on a link
@@ -279,8 +291,6 @@
                 nav.classList.remove('active');
             }
         });
-    } else {
-        console.error('Hamburger or Nav not found!');
     }
     </script>
 </body>
