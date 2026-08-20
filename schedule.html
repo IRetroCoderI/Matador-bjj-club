@@ -1,297 +1,563 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ========================================================
+         MATADOR JIU-JITSU — Schedule page (schedule.html)
+         --------------------------------------------------------
+         Three things live on this page, in order:
+           1. The CLUB schedule (our practices, on campus + at Forge)
+           2. Forge's FULL academy schedule (rebuilt as real HTML
+              from the image on their website, so it's readable on
+              phones — their site only posts it as a picture)
+           3. The two training locations with map links
+
+         ★ HOW TO UPDATE A SCHEDULE (the most common edit!):
+         Every class is one small block that looks like this:
+
+           <div class="class-block is-csun">
+               <span class="class-name">Fundamentals</span>
+               <span class="class-time">5:45 – 7:45 PM</span>
+           </div>
+
+         - "is-csun"  tints it CSUN red   (= on campus)
+         - "is-forge" tints it Forge gold (= at Forge)
+         • To ADD a class: copy a block into the right day's
+           <div class="day-body">.
+         • To REMOVE one: delete the whole block.
+         • To CHANGE a time: just edit the text.
+         • If a day ends up empty, put this inside its day-body so
+           the card doesn't look broken:
+             <p class="no-class">No classes</p>
+
+         Unlike the old site, there is only ONE copy of each
+         schedule — the same blocks rearrange themselves for
+         phones vs desktops via CSS. Edit once, done.
+         ======================================================== -->
     <meta charset="UTF-8">
+
+    <!-- Makes phones render at their real width (see index.html
+         for the longer explanation). -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matador Jiu-Jitsu | Schedule</title>
+
+    <title>Schedule &amp; Locations | Matador Jiu-Jitsu</title>
+
+    <!-- Search-result blurb for this specific page. -->
+    <meta name="description" content="Weekly training schedule for Matador Jiu-Jitsu, the CSUN Brazilian Jiu-Jitsu club — plus the full class schedule at our partner academy, Forge BJJ in Van Nuys.">
+    <meta name="theme-color" content="#CE0E2D">
+
+    <!-- Tab icons. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="favicon_io/apple-touch-icon.png">
+
+    <!-- The shared site stylesheet. -->
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/svg+xml" href="FreeSample-Vectorizer-io-White and Red-cropped.svg" size="128x128">
 </head>
-<style>
-    .collaboration-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        padding: 1rem;
-    }
-
-    .logo {
-        width: 300px;
-        height: auto;
-        display: block;
-        max-width: 100%;
-    }
-
-    .collaboration-x {
-        font-size: 4rem;
-        font-weight: 700;
-        color: #000000;
-    }
-    
-    .forge {
-        background-color: rgba(255, 204, 51, .3);
-    }
-
-    .csun {
-        background-color: rgba(210, 32, 48, .3);
-    }
-
-    /* Tablet sizing */
-    @media (max-width: 768px) {
-        .collaboration-container {
-            gap: 1.5rem;
-        }
-
-        .logo {
-            width: 150px;
-        }
-
-        .collaboration-x {
-            font-size: 2.5rem;
-        }
-    }
-
-    /* Mobile phone sizing */
-    @media (max-width: 480px) {
-        .collaboration-container {
-            gap: 1rem;
-            padding: 0.5rem;
-        }
-
-        .logo {
-            width: 100px;
-        }
-
-        .collaboration-x {
-            font-size: 1.8rem;
-        }
-    }
-</style>
 <body>
-    <div class="mobile-top-bar"></div> <!-- adding a new hamburger menu for mobile users -->
-   
-    <div class="title">
-        <div>
-            <p class="t1">Sports Club:</p>
-            <p class="t2">Brazilian Jiu-Jitsu</p>
+
+    <!-- Keyboard-user shortcut past the nav (see index.html). -->
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ========================================================
+         HEADER + NAV — identical block on every page. If you edit
+         a link here, edit it on the other pages too. The only
+         per-page difference: THIS page's link carries
+         aria-current="page" (that's what draws the marker).
+         ======================================================== -->
+    <header class="site-header">
+        <div class="container header-bar">
+            <!-- Brand: logo + name, links home. -->
+            <a class="brand" href="index.html">
+                <img src="assets/img/club-logo-white.svg" alt="Matador Jiu-Jitsu club logo">
+                <span class="brand-name">
+                    Matador Jiu-Jitsu
+                    <small>CSUN Sports Club</small>
+                </span>
+            </a>
+            <!-- Mobile menu button (hidden on desktop by CSS). -->
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        
-        <a href=""><img src="csunLogo.svg" alt="CSUN Logo"></a>
-    </div>
-
-    <div class="header">
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu"> <!-- adding hamburger button -->
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <nav>
-            <ul class="nav" id="nav">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./aboutus.html">About Us</a></li>
-                <li><a href="./meettheofficers.html">Meet the Team</a></li>
-                <li><a href="./gettingstarted.html">Getting Started</a></li>
-                <li><a href="./howtojoin.html">How to Join</a></li>
-                <li><a href="./schedule.html" class="active">Schedule & Location</a></li>
-                <li><a href="./contactus.html">Contact Us</a></li>
-                <li><a href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnqmkrsX0-yXFvF3qn-MyNasfEJlnlOeIrrKw30xc5VH04ssscxKY7VJScpmM_aem_zvm-UGrD3DYqhWdgyMEnGw" target="_blank">Team Store</a></li>
-                <li><a href="https://commerce.cashnet.com/csunasorg" target="_blank">Pay Here</a></li>
+        <!-- Nav links; script.js opens/closes this on phones. -->
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+            <ul class="container">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="schedule.html" aria-current="page">Schedule</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a class="nav-chip" href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/" target="_blank" rel="noopener">Team Store</a></li>
+                <li><a class="nav-chip" href="https://commerce.cashnet.com/csunasorg" target="_blank" rel="noopener">Pay Here</a></li>
             </ul>
         </nav>
-    </div>
-    <div class="collaboration-container">
-        <img src="White and Red.png" alt="CSUN Jiu-Jitsu Logo" class="logo">
-        
-        <div class="collaboration-x">×</div>
-        
-        <img src="forge fix b5.png" alt="Forge Brazilian Jiu-Jitsu Logo" class="logo">
-    </div>
-    <div class="main-content">
-        <h1>Schedule</h1>
-        <p>Current Schedule as of Feb. 2026</p>
-        
-        <!-- NEW/CHANGE: Desktop table (hidden on mobile) -->
-        <table class="desktop-table">
-            <tr>
-                <th>Sunday</th>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
-            </tr>
-            <tr>
-                <td class="forge">
-                    <p><strong>Open Mat @ <a href="https://www.google.com/maps/dir//Forge+Brazilian+Jiujitsu+Academy,+7900+Balboa+Blvd+Ste+1,+Van+Nuys,+CA+91406/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x80c29b0f32ce3209:0x7d2efa1819753c96?sa=X&ved=1t:57443&ictx=111" target="_blank">Forge</a></strong></p>
-                    <p>12:00pm - 2:00pm</p>
-                </td>
-                <td class="forge">
-                    <p><strong>Matador Jiu-Jitsu @Forge</strong></p>
-                    <p>7:45pm - 9:45pm</p>
-                </td>
-                <td class="csun">
-                    <p><strong>Fundamentals Class</strong></p>
-                    <p>5:45pm - 7:45pm</p>
-                </td>
-                <td class="forge">
-                    <p><strong>Matador Jiu-Jitsu @Forge</strong></p>
-                    <p>7:45pm - 9:45pm</p>
-                </td>
-                <td class="csun">
-                    <p><strong>Fundamentals Class</strong></p>
-                    <p>5:45pm - 7:45pm</p>
-                </td>
-                <td class="csun">
-                    <p><strong>All-Levels Class</strong></p>
-                    <p>4:30pm - 6:30pm</p>
-                </td>
-                <td class="forge">
-                    <p><strong>Forge Competition Class</strong></p>
-                    <p>12:00pm - 2:00pm</p>
-                </td>
-            </tr>
-            <tr>
-                <td></td><td></td>
-                <td class="csun">
-                    <p><strong>Competition Class</strong></p>
-                    <p>8:00pm - 9:45pm</p>
-                </td>
-                <td></td>
-                <td class="csun">
-                    <p><strong>Competition Class</strong></p>
-                    <p>8:00pm - 9:45pm</p>
-                </td>
-                <td></td><td></td>
-            </tr>
-        </table>
+    </header>
 
-        <!-- NEW/CHANGE: Mobile-friendly schedule (hidden on desktop) -->
-        <div class="mobile-schedule">
-            <div class="schedule-day">
-                <h3>Sunday</h3>
-                <div class="schedule-event forge">
-                    <strong>Open Mat @ Forge</strong>
-                    <p>12:00pm - 2:00pm</p>
+    <main id="main">
+
+        <!-- Short dark banner naming the page (the mini version of
+             the home page's big hero). -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Schedule &amp; Locations</h1>
+                <p>Where and when we train — on campus and at Forge.</p>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             SECTION 1: CLUB SCHEDULE
+             --------------------------------------------------------
+             Our practices, Monday through Sunday. One .day-card
+             per day; each class inside is a .class-block (see the
+             how-to at the very top of this file).
+             ==================================================== -->
+        <section class="section">
+            <div class="container">
+                <span class="kicker">Club Practices</span>
+                <h2>Weekly club schedule</h2>
+
+                <!-- The color-code key. The little dots are colored
+                     by CSS classes dot--csun / dot--forge. -->
+                <div class="legend">
+                    <span><span class="dot dot--csun"></span> On campus (CSUN)</span>
+                    <span><span class="dot dot--forge"></span> At Forge (Van Nuys)</span>
+                </div>
+
+                <!-- ⚠️ FALL 2026 NOTE: the schedule below is the
+                     Spring 2026 schedule. When the fall schedule is
+                     confirmed: update the class blocks below, then
+                     DELETE this whole notice paragraph. -->
+                <p class="notice">
+                    <strong>Heads up:</strong> this is the Spring 2026 schedule.
+                    The Fall 2026 schedule is being finalized — follow
+                    <a href="https://www.instagram.com/csunbjjofficial/" target="_blank" rel="noopener">@csunbjjofficial</a>
+                    for the announcement.
+                </p>
+
+                <!-- The week. On phones these cards stack; on wider
+                     screens CSS grid arranges them into columns. -->
+                <div class="week-grid">
+
+                    <!-- MONDAY — one practice, at Forge (gold). -->
+                    <div class="day-card">
+                        <h3>Monday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">Matador Jiu-Jitsu @ Forge</span>
+                                <span class="class-time">7:45 – 9:45 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TUESDAY — the big on-campus night: fundamentals,
+                         then competition class right after (both red). -->
+                    <div class="day-card">
+                        <h3>Tuesday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-csun">
+                                <span class="class-name">Fundamentals</span>
+                                <span class="class-time">5:45 – 7:45 PM</span>
+                            </div>
+                            <div class="class-block is-csun">
+                                <span class="class-name">Competition Class</span>
+                                <span class="class-time">8:00 – 9:45 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WEDNESDAY — one practice, at Forge (gold). -->
+                    <div class="day-card">
+                        <h3>Wednesday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">Matador Jiu-Jitsu @ Forge</span>
+                                <span class="class-time">7:45 – 9:45 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- THURSDAY — mirrors Tuesday: fundamentals +
+                         competition, both on campus (red). -->
+                    <div class="day-card">
+                        <h3>Thursday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-csun">
+                                <span class="class-name">Fundamentals</span>
+                                <span class="class-time">5:45 – 7:45 PM</span>
+                            </div>
+                            <div class="class-block is-csun">
+                                <span class="class-name">Competition Class</span>
+                                <span class="class-time">8:00 – 9:45 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FRIDAY — all-levels on campus (red). -->
+                    <div class="day-card">
+                        <h3>Friday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-csun">
+                                <span class="class-name">All-Levels Class</span>
+                                <span class="class-time">4:30 – 6:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SATURDAY — Forge's competition class (gold). -->
+                    <div class="day-card">
+                        <h3>Saturday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">Forge Competition Class</span>
+                                <span class="class-time">12:00 – 2:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUNDAY — open mat at Forge (gold). -->
+                    <div class="day-card">
+                        <h3>Sunday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">Open Mat @ Forge</span>
+                                <span class="class-time">12:00 – 2:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /week-grid (club) -->
+            </div>
+        </section>
+
+        <!-- ====================================================
+             SECTION 2: FORGE'S FULL ACADEMY SCHEDULE
+             --------------------------------------------------------
+             Club members can train at Forge, so here's their whole
+             timetable. Forge only publishes this as an IMAGE on
+             their site, so we re-typed it as real HTML — readable
+             on phones, searchable, and screen-reader friendly.
+             Every block here is "is-forge" (gold) since, well,
+             it's all at Forge.
+
+             ⚠️ MAINTENANCE: Forge refreshes their schedule image
+             every month or two. When they post a new one
+             (forgebjjacademy.com/schedule), compare it against
+             this section, update anything that changed, and bump
+             the "Rebuilt from" date in the notice just below.
+             ==================================================== -->
+        <section class="section section--alt">
+            <div class="container">
+                <span class="kicker">Partner Academy</span>
+                <h2>Full schedule at Forge</h2>
+                <p>
+                    As our partner academy, Forge Brazilian Jiu-Jitsu welcomes
+                    club members to their classes. Gi and no-gi programs run
+                    morning to night, six days a week.
+                </p>
+
+                <!-- The freshness note — update the month/year here
+                     every time you re-sync with Forge's posted image. -->
+                <p class="notice">
+                    Rebuilt from Forge's posted <strong>June 2026</strong> schedule.
+                    Always double-check
+                    <a href="https://forgebjjacademy.com/schedule/" target="_blank" rel="noopener">Forge's official schedule</a>
+                    before trying a new class.
+                </p>
+
+                <div class="week-grid">
+
+                    <!-- FORGE MONDAY — their fullest day: early-morning
+                         gi, midday classes, kids' classes, evening no-gi,
+                         and open mat to close. -->
+                    <div class="day-card">
+                        <h3>Monday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — Gi</span>
+                                <span class="class-time">6:00 – 7:30 AM · Coach Richard</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Striking — All Levels</span>
+                                <span class="class-time">10:00 – 11:30 AM · Coach Tim</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — Gi</span>
+                                <span class="class-time">12:00 – 1:30 PM · Coach Sam</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Little Champs — Gi (Ages 4–6)</span>
+                                <span class="class-time">5:30 – 6:30 PM · Coach Elijah</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Youth — Gi (Ages 7+)</span>
+                                <span class="class-time">5:30 – 6:30 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — No-Gi</span>
+                                <span class="class-time">6:30 – 8:00 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Open Mat — Gi / No-Gi</span>
+                                <span class="class-time">8:00 – 9:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORGE TUESDAY — no-gi focus in the morning and
+                         midday, gi in the evening. -->
+                    <div class="day-card">
+                        <h3>Tuesday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — No-Gi</span>
+                                <span class="class-time">6:00 – 7:30 AM · Coach Richard</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — No-Gi</span>
+                                <span class="class-time">12:00 – 1:30 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Youth — Gi (Ages 7+)</span>
+                                <span class="class-time">5:30 – 6:30 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — Gi</span>
+                                <span class="class-time">6:30 – 8:00 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Open Mat — Gi / No-Gi</span>
+                                <span class="class-time">8:00 – 9:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORGE WEDNESDAY — like Monday, plus the
+                         takedowns class at noon. -->
+                    <div class="day-card">
+                        <h3>Wednesday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — Gi</span>
+                                <span class="class-time">6:00 – 7:30 AM · Coach Richard</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Striking — All Levels</span>
+                                <span class="class-time">10:00 – 11:30 AM · Coach Tim</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Takedowns — No-Gi</span>
+                                <span class="class-time">12:00 – 1:30 PM · Coach Evan</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Little Champs — Gi (Ages 4–6)</span>
+                                <span class="class-time">5:30 – 6:30 PM · Coach Elijah</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Youth — No-Gi (Ages 7+)</span>
+                                <span class="class-time">5:30 – 6:30 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — No-Gi</span>
+                                <span class="class-time">6:30 – 8:00 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Open Mat — Gi / No-Gi</span>
+                                <span class="class-time">8:00 – 9:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORGE THURSDAY — no-gi mornings, gi evening,
+                         kids' classes at 5:30. -->
+                    <div class="day-card">
+                        <h3>Thursday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — No-Gi</span>
+                                <span class="class-time">6:00 – 7:30 AM · Coach Richard</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — No-Gi</span>
+                                <span class="class-time">12:00 – 1:30 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Little Champs — Gi (Ages 4–6)</span>
+                                <span class="class-time">5:30 – 6:30 PM · Coach Elijah</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Youth — Gi (Ages 7+)</span>
+                                <span class="class-time">5:30 – 6:30 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — Gi</span>
+                                <span class="class-time">6:30 – 8:00 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Open Mat — Gi / No-Gi</span>
+                                <span class="class-time">8:00 – 9:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORGE FRIDAY — no early-morning class; striking,
+                         midday gi, youth, evening no-gi, open mat. -->
+                    <div class="day-card">
+                        <h3>Friday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">Striking — All Levels</span>
+                                <span class="class-time">10:00 – 11:30 AM · Coach Tim</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — Gi</span>
+                                <span class="class-time">12:00 – 1:30 PM · Coach Sam</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Youth — No-Gi (Ages 7+)</span>
+                                <span class="class-time">5:30 – 6:30 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">BJJ — No-Gi</span>
+                                <span class="class-time">6:30 – 8:00 PM · Coach Alex</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Open Mat — Gi / No-Gi</span>
+                                <span class="class-time">8:00 – 9:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORGE SATURDAY — just the leg locks specialty
+                         class in the afternoon. -->
+                    <div class="day-card">
+                        <h3>Saturday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">Leg Locks — No-Gi</span>
+                                <span class="class-time">3:00 – 4:30 PM · Coach Alex</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORGE SUNDAY — morning striking + the open mat
+                         our club shares (it's also on the club schedule
+                         above, so keep the two in sync if it changes). -->
+                    <div class="day-card">
+                        <h3>Sunday</h3>
+                        <div class="day-body">
+                            <div class="class-block is-forge">
+                                <span class="class-name">Striking — All Levels</span>
+                                <span class="class-time">10:00 – 11:30 AM · Coach Tim</span>
+                            </div>
+                            <div class="class-block is-forge">
+                                <span class="class-name">Open Mat — Gi / No-Gi</span>
+                                <span class="class-time">12:00 – 2:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /week-grid (Forge) -->
+
+                <!-- Escape hatch to the source of truth. -->
+                <div class="btn-row">
+                    <a class="btn btn--outline-dark" href="https://forgebjjacademy.com/schedule/" target="_blank" rel="noopener">Forge's Official Schedule ↗</a>
                 </div>
             </div>
-            
-            <div class="schedule-day">
-                <h3>Monday</h3>
-                <div class="schedule-event forge">
-                    <strong>Matador Jiu-Jitsu @Forge</strong>
-                    <p>7:45pm - 9:45pm</p>
+        </section>
+
+        <!-- ====================================================
+             SECTION 3: LOCATIONS — both mats, with tap-to-navigate
+             Google Maps links (super handy on phones). The same
+             addresses also appear on the home page's "Where we
+             train" section — update both places if a gym moves.
+             ==================================================== -->
+        <section class="section">
+            <div class="container">
+                <span class="kicker">Locations</span>
+                <h2>Find the mats</h2>
+
+                <div class="location-grid">
+
+                    <!-- CARD: campus location. The maps link uses
+                         Google's "search" URL format — simple and it
+                         opens the native maps app on phones. -->
+                    <div class="card location-card is-csun">
+                        <h3>CSUN Campus</h3>
+                        <p>
+                            Redwood Hall, Room RE 251<br>
+                            18111 Nordhoff St<br>
+                            Northridge, CA 91330
+                        </p>
+                        <a class="btn btn--outline-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Redwood+Hall+CSUN+Northridge" target="_blank" rel="noopener">Open in Maps</a>
+                    </div>
+
+                    <!-- CARD: Forge's gym in Van Nuys. -->
+                    <div class="card location-card is-forge">
+                        <h3>Forge BJJ Academy</h3>
+                        <p>
+                            7900 Balboa Blvd., Delta #4<br>
+                            Van Nuys, CA 91406
+                        </p>
+                        <a class="btn btn--outline-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Forge+Brazilian+Jiujitsu+Academy+7900+Balboa+Blvd+Van+Nuys" target="_blank" rel="noopener">Open in Maps</a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="schedule-day">
-                <h3>Tuesday</h3>
-                <div class="schedule-event csun">
-                    <strong>Fundamentals Class</strong>
-                    <p>5:45pm - 7:45pm</p>
-                </div>
-                <div class="schedule-event csun">
-                    <strong>Competition Class</strong>
-                    <p>8:00pm - 9:45pm</p>
-                </div>
+        </section>
+    </main>
+
+    <!-- ========================================================
+         FOOTER — same four-column block as every other page.
+         (See index.html for the column-by-column notes.)
+         ======================================================== -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <!-- Column 1: brand. -->
+            <div class="footer-col footer-brand">
+                <img src="assets/img/club-logo-white.svg" alt="Matador Jiu-Jitsu club logo">
+                <p>
+                    The Brazilian Jiu-Jitsu sports club at California State
+                    University, Northridge.
+                </p>
             </div>
-            
-            <div class="schedule-day">
-                <h3>Wednesday</h3>
-                <div class="schedule-event forge">
-                    <strong>Matador Jiu-Jitsu @Forge</strong>
-                    <p>7:45pm - 9:45pm</p>
-                </div>
+            <!-- Column 2: site pages. -->
+            <div class="footer-col">
+                <h4>Site</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="join.html">Join</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
             </div>
-            
-            <div class="schedule-day">
-                <h3>Thursday</h3>
-                <div class="schedule-event csun">
-                    <strong>Fundamentals Class</strong>
-                    <p>5:45pm - 7:45pm</p>
-                </div>
-                <div class="schedule-event csun">
-                    <strong>Competition Class</strong>
-                    <p>8:00pm - 9:45pm</p>
-                </div>
+            <!-- Column 3: club business links. -->
+            <div class="footer-col">
+                <h4>Club</h4>
+                <ul>
+                    <li><a href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/" target="_blank" rel="noopener">Team Store</a></li>
+                    <li><a href="https://commerce.cashnet.com/csunasorg" target="_blank" rel="noopener">Pay Dues</a></li>
+                    <li><a href="https://www.instagram.com/csunbjjofficial/" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="mailto:jiujitsu@csunas.org">jiujitsu@csunas.org</a></li>
+                </ul>
             </div>
-            
-            <div class="schedule-day">
-                <h3>Friday</h3>
-                <div class="schedule-event csun">
-                    <strong>All-Levels Class</strong>
-                    <p>4:30pm - 6:30pm</p>
-                </div>
-            </div>
-            
-            <div class="schedule-day">
-                <h3>Saturday</h3>
-                <div class="schedule-event forge">
-                    <strong>Forge Competition Class</strong>
-                    <p>12:00pm - 2:00pm</p>
-                </div>
+            <!-- Column 4: website credits + contact for site updates. -->
+            <div class="footer-col">
+                <h4>This Website</h4>
+                <ul>
+                    <li><a href="mailto:jiujitsu@csunas.org">Questions &amp; update requests</a></li>
+                    <li><a href="https://github.com/IRetroCoderI" target="_blank" rel="noopener">GitHub — IRetroCoderI</a></li>
+                    <li><a href="https://www.linkedin.com/in/jesus-ramirez-88846b248/" target="_blank" rel="noopener">LinkedIn — Jesus Ramirez</a></li>
+                </ul>
             </div>
         </div>
-
-        
-
-        <h1>Locations</h1>
-        <div class="mobile-schedule">
-            <div class="schedule-day csun">
-                <h3>CSUN Training</h3>
-                <p>Redwood Hall, RE 251</p>
+        <div class="footer-bottom">
+            <div class="container">
+                © <span id="year"></span> Matador Jiu-Jitsu · CSUN Sports Club
             </div>
-        </div>
-        <div class="mobile-schedule">
-            <div class="schedule-day forge">
-                <h3>Forge Training</h3>
-                <p>Forge Brazilian Jiujitsu Academy 7900 Balboa Blvd., Delta #4 Van Nuys, CA 91406</p>
-            </div>
-        </div>
-        <table class="desktop-table">
-            <tr>
-                <td class="csun">CSUN Campus, Redwood Hall, RE 251</td>
-                <td class="forge">Forge Brazilian Jiujitsu Academy 7900 Balboa Blvd., Delta #4 Van Nuys, CA 91406</td>
-            </tr>
-        </table>
-    </div>
-    <footer class="footer">
-        <div class="footer-content">
         </div>
     </footer>
-    <script>
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
 
-    if (hamburger && nav) {
-        hamburger.addEventListener('click', function() {
-            this.classList.toggle('active');
-            nav.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        const navLinks = nav.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const isClickInsideNav = nav.contains(event.target);
-            const isClickOnHamburger = hamburger.contains(event.target);
-            
-            if (!isClickInsideNav && !isClickOnHamburger && nav.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-            }
-        });
-    }
-    </script>
+    <!-- Shared JavaScript: hamburger menu + auto copyright year. -->
+    <script src="script.js"></script>
 </body>
 </html>

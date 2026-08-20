@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========================================================
+         MATADOR JIU-JITSU — Gallery page (gallery.html)
+         --------------------------------------------------------
+         A simple responsive photo grid. Right now every tile is a
+         striped placeholder box waiting for real photos.
+
+         ★ HOW TO ADD A PHOTO (3 steps):
+
+           1. Drop the image file into assets/img/gallery/
+              (create that folder the first time). Web-size it
+              first — roughly 1200px on the long side keeps the
+              page fast; phones will thank you.
+
+           2. Replace one placeholder <div> with an <img>:
+
+              BEFORE: <div class="photo-placeholder">Photo coming soon</div>
+              AFTER:  <img src="assets/img/gallery/your-photo.jpg"
+                           alt="describe what's happening in the photo"
+                           loading="lazy">
+
+              The alt text matters — it's what screen readers say
+              and what shows if the image ever fails to load.
+
+           3. That's it. "loading='lazy'" tells the browser not to
+              download photos until the visitor scrolls near them —
+              free speed, no JavaScript needed.
+
+         The grid handles ANY number of tiles — add 5 or 50, it
+         reflows automatically on every screen size. Photos are
+         auto-cropped to squares by the CSS, so any shape works.
+         ======================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery | Matador Jiu-Jitsu</title>
+
+    <!-- Search-result blurb for this page. -->
+    <meta name="description" content="Photos from Matador Jiu-Jitsu — training, competitions, and club life at CSUN's Brazilian Jiu-Jitsu club.">
+    <meta name="theme-color" content="#CE0E2D">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="favicon_io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Keyboard-user shortcut past the nav. -->
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ========================================================
+         HEADER + NAV — same block as every page; "Gallery"
+         carries the aria-current marker here.
+         ======================================================== -->
+    <header class="site-header">
+        <div class="container header-bar">
+            <a class="brand" href="index.html">
+                <img src="assets/img/club-logo-white.svg" alt="Matador Jiu-Jitsu club logo">
+                <span class="brand-name">
+                    Matador Jiu-Jitsu
+                    <small>CSUN Sports Club</small>
+                </span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+            <ul class="container">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+                <li><a class="nav-chip" href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/" target="_blank" rel="noopener">Team Store</a></li>
+                <li><a class="nav-chip" href="https://commerce.cashnet.com/csunasorg" target="_blank" rel="noopener">Pay Here</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <!-- Page banner. -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Gallery</h1>
+                <p>Training days, competition days, and everything in between.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <span class="kicker">Photos</span>
+                <h2>Club life</h2>
+                <p>
+                    We're collecting our best shots from practices and
+                    tournaments — photos land here soon. In the meantime, our
+                    Instagram is packed with clips and photos from the mats.
+                </p>
+
+                <!-- THE PHOTO GRID. Twelve placeholder tiles for now.
+                     Swap each one for an <img> as photos come in — the
+                     3-step instructions are at the top of this file.
+                     Tiles fill the grid left-to-right, top-to-bottom,
+                     so put your best photos first. -->
+                <div class="gallery-grid">
+                    <!-- Tile 1 — swap me for an <img> when ready. -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 2 -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 3 -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 4 -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 5 -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 6 -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 7 -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 8 -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 9 -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 10 -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 11 -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                    <!-- Tile 12 — need more? Just copy another one. -->
+                    <div class="photo-placeholder">Photo coming soon</div>
+                </div>
+
+                <!-- Until the grid has real photos, Instagram is the
+                     real gallery — send people there. -->
+                <div class="btn-row">
+                    <a class="btn btn--red" href="https://www.instagram.com/csunbjjofficial/" target="_blank" rel="noopener">See More on Instagram ↗</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================================
+         FOOTER — same four-column block as every other page.
+         (See index.html for the column-by-column notes.)
+         ======================================================== -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <!-- Column 1: brand. -->
+            <div class="footer-col footer-brand">
+                <img src="assets/img/club-logo-white.svg" alt="Matador Jiu-Jitsu club logo">
+                <p>
+                    The Brazilian Jiu-Jitsu sports club at California State
+                    University, Northridge.
+                </p>
+            </div>
+            <!-- Column 2: site pages. -->
+            <div class="footer-col">
+                <h4>Site</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="join.html">Join</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            <!-- Column 3: club business links. -->
+            <div class="footer-col">
+                <h4>Club</h4>
+                <ul>
+                    <li><a href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/" target="_blank" rel="noopener">Team Store</a></li>
+                    <li><a href="https://commerce.cashnet.com/csunasorg" target="_blank" rel="noopener">Pay Dues</a></li>
+                    <li><a href="https://www.instagram.com/csunbjjofficial/" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="mailto:jiujitsu@csunas.org">jiujitsu@csunas.org</a></li>
+                </ul>
+            </div>
+            <!-- Column 4: website credits + contact for site updates. -->
+            <div class="footer-col">
+                <h4>This Website</h4>
+                <ul>
+                    <li><a href="mailto:jiujitsu@csunas.org">Questions &amp; update requests</a></li>
+                    <li><a href="https://github.com/IRetroCoderI" target="_blank" rel="noopener">GitHub — IRetroCoderI</a></li>
+                    <li><a href="https://www.linkedin.com/in/jesus-ramirez-88846b248/" target="_blank" rel="noopener">LinkedIn — Jesus Ramirez</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                © <span id="year"></span> Matador Jiu-Jitsu · CSUN Sports Club
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
