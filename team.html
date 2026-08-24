@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========================================================
+         MATADOR JIU-JITSU — Team page (team.html)
+         --------------------------------------------------------
+         Two sections: Coaches, then Officers.
+
+         ★ THE THREE EDITS YOU'LL MAKE ON THIS PAGE:
+
+         1. CHANGE A PERSON'S NAME OR ROLE:
+            Find their card below and edit the text in place.
+
+         2. ADD OR REMOVE A PERSON:
+            Each person is one self-contained block:
+
+              <div class="card team-card">
+                  <div class="photo-placeholder">Photo coming soon</div>
+                  <h3>Name Here</h3>
+                  <p class="role">Their Role</p>
+              </div>
+
+            Copy a whole block to add someone; delete a whole
+            block to remove someone. The grid re-arranges itself
+            automatically — any number of cards works.
+
+         3. ADD A HEADSHOT:
+            Drop the photo in assets/img/ (square-ish crops look
+            best), then swap the placeholder line for an image:
+
+              BEFORE: <div class="photo-placeholder">Photo coming soon</div>
+              AFTER:  <img src="assets/img/firstname.jpg" alt="Firstname Lastname">
+
+            The CSS auto-crops any photo to a perfect square, so
+            don't stress about exact dimensions.
+
+         ⚠️ ROSTER NOTE: this is the 2025–26 officer lineup, kept
+         as a placeholder until the new roster is confirmed.
+         ======================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meet the Team | Matador Jiu-Jitsu</title>
+
+    <!-- Search-result blurb for this page. -->
+    <meta name="description" content="The coaches and student officers behind Matador Jiu-Jitsu, CSUN's Brazilian Jiu-Jitsu sports club.">
+    <meta name="theme-color" content="#CE0E2D">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="favicon_io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Keyboard-user shortcut past the nav. -->
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ========================================================
+         HEADER + NAV — same block as every page; "Team" carries
+         the aria-current marker here.
+         ======================================================== -->
+    <header class="site-header">
+        <div class="container header-bar">
+            <a class="brand" href="index.html">
+                <img src="assets/img/club-logo-white.svg" alt="Matador Jiu-Jitsu club logo">
+                <span class="brand-name">
+                    Matador Jiu-Jitsu
+                    <small>CSUN Sports Club</small>
+                </span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+            <ul class="container">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="team.html" aria-current="page">Team</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a class="nav-chip" href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/" target="_blank" rel="noopener">Team Store</a></li>
+                <li><a class="nav-chip" href="https://commerce.cashnet.com/csunasorg" target="_blank" rel="noopener">Pay Here</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <!-- Page banner. -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Meet the Team</h1>
+                <p>The coaches and student officers who keep the club rolling.</p>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             COACHES — the instructors. Coach cards have an extra
+             <p class="detail"> line for belt rank / lineage.
+             ==================================================== -->
+        <section class="section">
+            <div class="container">
+                <span class="kicker">Instruction</span>
+                <h2>Coaches</h2>
+
+                <div class="team-grid">
+
+                    <!-- CARD: Eric Medina — head coach.
+                         The "detail" line holds his lineage. -->
+                    <div class="card team-card">
+                        <div class="photo-placeholder">Photo coming soon</div>
+                        <h3>Eric "The Darce Knight" Medina</h3>
+                        <p class="role">Coach</p>
+                        <p class="detail">Black belt under Jean Jacque Machado</p>
+                    </div>
+
+                    <!-- CARD: Jose Arreguin — coach. -->
+                    <div class="card team-card">
+                        <div class="photo-placeholder">Photo coming soon</div>
+                        <h3>Jose "Animal" Arreguin</h3>
+                        <p class="role">Coach</p>
+                        <p class="detail">Brown belt under 10th Planet Jiu-Jitsu</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             OFFICERS — the student leadership.
+             ⚠️ This is the 2025–26 roster. When the new lineup is
+             confirmed: update the names/roles below, then delete
+             the notice paragraph.
+             ==================================================== -->
+        <section class="section section--alt">
+            <div class="container">
+                <span class="kicker">Leadership</span>
+                <h2>Club officers</h2>
+
+                <!-- The "roster pending" note — remove once updated. -->
+                <p class="notice">
+                    This is the 2025–26 officer roster — the new lineup will be
+                    posted here once it's confirmed.
+                </p>
+
+                <div class="team-grid">
+
+                    <!-- CARD: President. -->
+                    <div class="card team-card">
+                        <div class="photo-placeholder">Photo coming soon</div>
+                        <h3>Jesus Ramirez</h3>
+                        <p class="role">President</p>
+                    </div>
+
+                    <!-- CARD: Vice President. -->
+                    <div class="card team-card">
+                        <div class="photo-placeholder">Photo coming soon</div>
+                        <h3>Joey Kremin</h3>
+                        <p class="role">Vice President</p>
+                    </div>
+
+                    <!-- CARD: Treasurer. -->
+                    <div class="card team-card">
+                        <div class="photo-placeholder">Photo coming soon</div>
+                        <h3>Aidan Pineda</h3>
+                        <p class="role">Treasurer</p>
+                    </div>
+
+                    <!-- CARD: Social Media & Risk/Safety. -->
+                    <div class="card team-card">
+                        <div class="photo-placeholder">Photo coming soon</div>
+                        <h3>Dhnzl Dreyl Ocampo</h3>
+                        <p class="role">Social Media &amp; Risk Manager / Safety Officer</p>
+                    </div>
+
+                    <!-- CARD: 5th Officer. -->
+                    <div class="card team-card">
+                        <div class="photo-placeholder">Photo coming soon</div>
+                        <h3>Andre Grigorian</h3>
+                        <p class="role">5th Officer</p>
+                    </div>
+
+                    <!-- CARD: Secretary. -->
+                    <div class="card team-card">
+                        <div class="photo-placeholder">Photo coming soon</div>
+                        <h3>Ian Quindipan</h3>
+                        <p class="role">Secretary</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             CLOSING CTA — dark band steering visitors toward
+             joining or checking the schedule.
+             ==================================================== -->
+        <section class="section section--dark insta-band">
+            <div class="container">
+                <span class="kicker">Say Hi</span>
+                <h2>Come meet us on the mats</h2>
+                <p style="margin-inline:auto;">
+                    The fastest way to get to know the team is to show up to a
+                    practice — your first week is just $20.
+                </p>
+                <div class="btn-row" style="justify-content:center;">
+                    <a class="btn btn--red" href="join.html">How to Join</a>
+                    <a class="btn btn--outline" href="schedule.html">View Schedule</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================================
+         FOOTER — same four-column block as every other page.
+         (See index.html for the column-by-column notes.)
+         ======================================================== -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <!-- Column 1: brand. -->
+            <div class="footer-col footer-brand">
+                <img src="assets/img/club-logo-white.svg" alt="Matador Jiu-Jitsu club logo">
+                <p>
+                    The Brazilian Jiu-Jitsu sports club at California State
+                    University, Northridge.
+                </p>
+            </div>
+            <!-- Column 2: site pages. -->
+            <div class="footer-col">
+                <h4>Site</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="join.html">Join</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            <!-- Column 3: club business links. -->
+            <div class="footer-col">
+                <h4>Club</h4>
+                <ul>
+                    <li><a href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/" target="_blank" rel="noopener">Team Store</a></li>
+                    <li><a href="https://commerce.cashnet.com/csunasorg" target="_blank" rel="noopener">Pay Dues</a></li>
+                    <li><a href="https://www.instagram.com/csunbjjofficial/" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="mailto:jiujitsu@csunas.org">jiujitsu@csunas.org</a></li>
+                </ul>
+            </div>
+            <!-- Column 4: website credits + contact for site updates. -->
+            <div class="footer-col">
+                <h4>This Website</h4>
+                <ul>
+                    <li><a href="mailto:jiujitsu@csunas.org">Questions &amp; update requests</a></li>
+                    <li><a href="https://github.com/IRetroCoderI" target="_blank" rel="noopener">GitHub — IRetroCoderI</a></li>
+                    <li><a href="https://www.linkedin.com/in/jesus-ramirez-88846b248/" target="_blank" rel="noopener">LinkedIn — Jesus Ramirez</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                © <span id="year"></span> Matador Jiu-Jitsu · CSUN Sports Club
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

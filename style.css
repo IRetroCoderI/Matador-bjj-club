@@ -1,410 +1,1112 @@
-/* NEW/CHANGE: Using Crimson Text as closest free alternative to CSUN's Apex Serif */
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+/* ============================================================
+   MATADOR JIU-JITSU — style.css
+   ------------------------------------------------------------
+   This one file styles every page of the site. It's written
+   "mobile-first": the base styles are for phones, and then
+   @media blocks further down add the fancier desktop layouts.
+   That's the opposite of the old stylesheet, which was written
+   desktop-first — mobile-first is easier to reason about and
+   matches how most of our visitors actually browse (on phones).
 
-        * { /* targets every element on page */
-            /* resets default margins and padding */
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+   TABLE OF CONTENTS (search for the number to jump there):
+     1. Fonts (Vitesse + Atkinson Hyperlegible)
+     2. Design tokens (colors, spacing — change once, applies everywhere)
+     3. Reset & base styles
+     4. Reusable helpers (.container, .btn, .kicker, etc.)
+     5. Header & navigation (including the mobile hamburger menu)
+     6. Hero sections (big banner on home + smaller ones on inner pages)
+     7. Cards & grids (schedule, team, gallery, highlights)
+     8. Schedule-specific styles (CSUN red vs Forge gold color coding)
+     9. Announcement + Instagram bands
+    10. Footer
+    11. Desktop upgrades (@media queries)
+    12. Accessibility & small niceties
+   ============================================================ */
 
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
 
-        .title {
-            font-size: 2.5rem;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* ============================================================
+   1. FONTS
+   ------------------------------------------------------------
+   Headlines use "Vitesse" — the same slab-serif typeface CSUN
+   Athletics uses, loaded from font files that live in this repo
+   at assets/fonts/. Body text uses "Atkinson Hyperlegible",
+   which is CSUN's official web font (per csun.edu/identity) and
+   is free on Google Fonts. It was literally designed for maximum
+   readability, which is perfect for us.
+   ============================================================ */
 
-        .title .t1 {
-            font-size: 1rem;
-            font-weight: 700;
-            line-height: 1.33;
-            text-transform: none;
-            margin-bottom: -40px;
-        }
+/* Pull Atkinson Hyperlegible from Google Fonts (regular + bold + italics).
+   "display=swap" means text shows instantly in a fallback font and swaps
+   to the real font when it finishes downloading — no invisible text. */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-        .title .t2 {
-            margin-top: 40px;
-            font-weight: 700;
-            font-size: 2.5rem;
-            margin-bottom: -20px;
-            line-height: 1.14;
-        }
+/* Each @font-face block teaches the browser one weight of Vitesse.
+   "font-display: swap" = same instant-text trick as above. */
+@font-face {
+    font-family: 'Vitesse';
+    src: url('assets/fonts/Vitesse-Book.otf') format('opentype');
+    font-weight: 400;
+    font-display: swap;
+}
 
-        .title img {
-            align-self: center;
-            max-height: 80px;
-        }
+@font-face {
+    font-family: 'Vitesse';
+    src: url('assets/fonts/Vitesse-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-display: swap;
+}
 
-        .header {
-            width: 100vw;
-            margin: 0 -2.5rem;
-            padding: 0 2.5rem;
-        }
+@font-face {
+    font-family: 'Vitesse';
+    src: url('assets/fonts/Vitesse-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-display: swap;
+}
 
-        /* NEW/CHANGE: Desktop-first navigation */
-        .nav {
-            font-family: 'Apex Serif', Georgia, 'Times New Roman', serif;
-            padding-left: 2rem;
-            background-color: #d22030;
-            color: white;
-            display: flex;
-            align-items: center;
-            list-style: none;
-            font-size: 1.125rem;
-            width: 100vw;
-            height: 5.25rem;
-            border-bottom: 0.0625rem solid rgb(190, 198, 195);
-        }
+@font-face {
+    font-family: 'Vitesse';
+    src: url('assets/fonts/Vitesse-Black.otf') format('opentype');
+    font-weight: 900;
+    font-display: swap;
+}
 
-        .nav li {
-            color: inherit;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
 
-        .nav a {
-            padding: 2rem 1rem;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            text-align: center;
-            color: white;
-            font-weight: 400;
-            font-size: 1.0625rem;
-            line-height: 1.2;
-            height: 100%;
-            margin: .5rem;
-            position: relative;
-        }
+/* ============================================================
+   2. DESIGN TOKENS
+   ------------------------------------------------------------
+   These are CSS "custom properties" (variables). Every color and
+   font on the site points back to this list, so if we ever need
+   to tweak a color, we change it HERE ONCE and the whole site
+   updates. No more hunting for three slightly-different reds
+   like the old site had. :)
+   ============================================================ */
+:root {
+    /* --- Brand colors --- */
+    /* CSUN Red, sampled straight from the official CSUN wordmark
+       SVG. This is THE primary color of the site. */
+    --red: #CE0E2D;
+    --red-dark: #A50B24;      /* darker red for hover states */
+    --red-tint: #FBEBEE;      /* super light red — backgrounds for CSUN-tagged items */
 
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background-color: white;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
+    /* Forge's brand gold (from their logo). Used ONLY to tag
+       things that happen at Forge, so the schedule color-coding
+       is instantly readable. */
+    --gold: #C08A00;          /* readable gold for text/borders */
+    --gold-tint: #FDF6E0;     /* super light gold — backgrounds for Forge-tagged items */
 
-        .nav a:hover::after {
-            width: 80%;
-        }
+    /* --- Neutrals --- */
+    --ink: #17181D;           /* near-black: body text + dark section backgrounds */
+    --ink-soft: #23252D;      /* slightly lighter panel color used ON dark sections */
+    --gray: #5B5E6A;          /* secondary text (times, captions) */
+    --paper: #FFFFFF;         /* main page background */
+    --paper-alt: #F5F5F7;     /* alternating section background */
+    --line: #E3E4E8;          /* hairline borders */
 
-        .nav a.active::after {
-            width: 80%;
-        }
+    /* --- Typography --- */
+    --font-display: 'Vitesse', 'Georgia', 'Times New Roman', serif;   /* headlines */
+    --font-body: 'Atkinson Hyperlegible', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* everything else */
 
-        .main-content {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 2rem;
-            min-height: 500px;
-        }
+    /* --- Sizing --- */
+    --container: 1100px;      /* max width of page content */
+    --radius: 12px;           /* rounded corner size used on cards/buttons */
+    --header-h: 64px;         /* height of the sticky red header */
 
-        .main-content ul,
-        .main-content ol {
-            margin: 1rem 0;
-            padding-left: 2rem;
-        }
+    /* Soft shadow used on cards. Defined once so every card matches. */
+    --shadow: 0 2px 10px rgba(23, 24, 29, 0.08);
+}
 
-        .main-content li {
-            margin-bottom: 0.5rem;
-            line-height: 1.5;
-        }
 
-        .main-content h1 {
-            color: #d02030;
-            margin-bottom: 1.5rem;
-        }
+/* ============================================================
+   3. RESET & BASE STYLES
+   ------------------------------------------------------------
+   Browsers ship with inconsistent default styling, so we zero
+   things out and set our own sensible baseline.
+   ============================================================ */
 
-        .main-content h2 {
-            color: #d02030;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
+/* Apply to every element: predictable box sizing, no surprise margins. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .main-content p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
+html {
+    /* When you click an in-page link (like the "back to top" arrow),
+       glide there instead of teleporting. */
+    scroll-behavior: smooth;
+}
 
-        /* NEW/CHANGE: Desktop table styling */
-        .desktop-table {
-            border: 2px solid black;
-            margin: 10px auto;
-            border-collapse: collapse;
-            width: 100%;
-            max-width: 100%;
-        }
+body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;                 /* comfy reading line spacing */
+    -webkit-font-smoothing: antialiased; /* crisper text on Mac/iOS */
+}
 
-        .desktop-table tr th {
-            border: 2px solid black;
-            background-color: rgb(210, 32, 48);
-            color: white;
-            padding: 15px 10px;
-            font-family: 'Apex Serif', Georgia, 'Times New Roman', serif;
-        }
+/* Images should never overflow their container (a classic cause of
+   sideways scrolling on phones). */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
-        .desktop-table tr td {
-            border: 1px solid black;
-            text-align: center;
-            padding: 20px 20px;
-            vertical-align: top;
-        }
+/* Links inherit their surrounding text color unless a component
+   says otherwise. */
+a {
+    color: var(--red);
+    text-decoration: none;
+}
 
-        /* NEW/CHANGE: Mobile schedule cards - hidden by default */
-        .mobile-schedule {
-            display: none;
-        }
+a:hover {
+    text-decoration: underline;
+}
 
-        .schedule-day {
-            background: white;
-            border: 2px solid #d02030;
-            border-radius: 8px;
-            margin: 1rem 0;
-            padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+/* Headlines all use the athletic slab font. */
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+    text-wrap: balance; /* newer browsers balance multi-line headings nicely */
+}
 
-        .schedule-day h3 {
-            color: #d02030;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-        }
+/* Lists inside content areas keep their bullets and get breathing room. */
+.section ul,
+.section ol {
+    padding-left: 1.4rem;
+    margin: 0.75rem 0;
+}
 
-        .schedule-event {
-            margin: 0.75rem 0;
-            padding: 0.5rem;
-            background: #f8f9fa;
-            border-radius: 4px;
-        }
+.section li {
+    margin-bottom: 0.4rem;
+}
 
-        .schedule-event strong {
-            display: block;
-            color: #d02030;
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
 
-        .schedule-event p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
+/* ============================================================
+   4. REUSABLE HELPERS
+   ------------------------------------------------------------
+   Small building-block classes used all over the site.
+   ============================================================ */
 
-        .no-events {
-            color: #999;
-            font-style: italic;
-            text-align: center;
-            padding: 1rem;
-        }
+/* Centers content and keeps it from getting too wide on big screens. */
+.container {
+    max-width: var(--container);
+    margin-inline: auto;          /* shorthand for margin-left + margin-right */
+    padding-inline: 1.25rem;      /* side padding so text never touches screen edges */
+}
 
-        .footer {
-            width: 100%;
-            height: 500px;
-            background-image: url(//live-csu-northridge.pantheonsite.io/sites/default/files/2022-06/HomepageFooter_1_1600x800-min.jpg);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+/* A "section" is one horizontal band of the page.
+   clamp(min, preferred, max) scales the padding with screen size. */
+.section {
+    padding-block: clamp(2.75rem, 7vw, 5rem);
+}
 
-        .footer-content {
-            color: white;
-        }
+/* Alternate background for every-other section, so the page has rhythm. */
+.section--alt {
+    background: var(--paper-alt);
+}
 
-        /* Mobile Top Bar - MUST BE BEFORE MEDIA QUERIES */
-        .mobile-top-bar {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4rem;
-            background-color: rgb(210, 32, 48);
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+/* Dark band (used for the Instagram section, etc.). */
+.section--dark {
+    background: var(--ink);
+    color: #fff;
+}
 
-        /* Hamburger Menu Button - MUST BE BEFORE MEDIA QUERIES */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 2rem;
-            height: 2rem;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-            position: fixed;
-            top: 1rem;
-            left: 1.5rem;
-        }
+/* The little red all-caps label that sits above each section heading,
+   e.g. "THE CLUB" above "Who we are". A CSUN-style touch. */
+.kicker {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    border-bottom: 3px solid var(--red);
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.9rem;
+}
 
-        .hamburger span {
-            width: 2rem;
-            height: 0.25rem;
-            background: white;
-            border-radius: 10px;
-            transition: all 0.3s linear;
-            position: relative;
-            transform-origin: 1px;
-        }
+/* On dark sections the red label gets a white underline for contrast. */
+.section--dark .kicker {
+    color: #fff;
+    border-bottom-color: var(--red);
+}
 
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg);
-        }
+/* Section headings. clamp() = smaller on phones, bigger on desktop. */
+.section h2 {
+    font-size: clamp(1.6rem, 4.5vw, 2.3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
 
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
+.section h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.5rem;
+}
 
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg);
-        }
+.section p {
+    margin-bottom: 1rem;
+    max-width: 65ch; /* cap line length — long lines are hard to read */
+}
 
-        /* NEW/CHANGE: Tablet responsive styles */
-        @media (max-width: 768px) {
-            .mobile-top-bar {
-                display: block;
-            }
+/* --- Buttons ---------------------------------------------------
+   .btn is the base; add .btn--red / .btn--outline / .btn--light
+   to pick a style. Used for CTAs, store links, map links, etc. */
+.btn {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+    padding: 0.8rem 1.5rem;
+    border-radius: 999px;         /* pill shape */
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
 
-            body {
-                padding-top: 4rem;
-            }
+.btn:hover {
+    text-decoration: none; /* buttons shouldn't underline on hover */
+}
 
-            .title {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem;
-                margin-top: 0;
-                margin-bottom: 1rem;
-            }
-            
-            .title img {
-                margin-top: 1rem;
-                max-width: 150px;
-            }
+/* Solid CSUN-red button — the main call-to-action style. */
+.btn--red {
+    background: var(--red);
+    color: #fff;
+}
 
-            .hamburger {
-                display: flex;
-            }
-            
-            /* NEW/CHANGE: Mobile navigation - stacks vertically */
-            .nav {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                height: 100vh;
-                width: 80%;
-                max-width: 400px;
-                flex-direction: column;
-                padding: 5rem 2rem 2rem 2rem;
-                gap: 0;
-                background-color: rgb(210, 32, 48);
-                transition: left 0.3s ease-in-out;
-                overflow-y: auto;
-                z-index: 999;
-                box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-            }
+.btn--red:hover {
+    background: var(--red-dark);
+    color: #fff;
+}
 
-            .nav.active { /* show nav when active */
-                left: 0;
-            }
-            
-            .nav li {
-                width: 100%;
-                text-align: left;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            
-            .nav a {
-                width: 100%;
-                padding: 1.25rem 1rem;
-                margin: 0;
-                border-radius: 0;
-                transition: background-color 0.3s ease;
-                font-size: 1.1rem;
-                justify-content: flex-start;
-            }
-            
-            .nav a:hover,
-            .nav a.active {
-                background-color: rgba(255, 255, 255, 0.1);
-            }
-            
-            /* NEW/CHANGE: Hide bottom border animation on mobile, use background instead */
-            .nav a::after {
-                display: none;
-            }
-            
-            .main-content {
-                padding: 0 1rem;
-                margin: 25px auto;
-            }
-            
-            /* NEW/CHANGE: Hide desktop table, show mobile schedule */
-            .desktop-table {
-                display: none;
-            }
-            
-            .mobile-schedule {
-                display: block;
-            }
-            
-            .footer {
-                height: 400px;
-            }
-        }
+/* Outlined button for use on DARK backgrounds (hero, footer). */
+.btn--outline {
+    border-color: #fff;
+    color: #fff;
+}
 
-        /* NEW/CHANGE: Phone responsive styles */
-        @media (max-width: 480px) {
-            .title .t1 {
-                font-size: 0.9rem;
-            }
-            
-            .title .t2 {
-                font-size: 1.8rem;
-            }
-            
-            .nav a {
-                font-size: 0.9rem;
-                padding: 0.875rem;
-            }
-            
-            .main-content {
-                padding: 0 0.5rem;
-                margin: 20px auto;
-            }
-            
-            .main-content h1 {
-                font-size: 1.4rem;
-                margin-bottom: 1rem;
-            }
-            
-            .main-content p {
-                font-size: 0.9rem;
-            }
-            
-            .footer {
-                height: 300px;
-            }
-        }
+.btn--outline:hover {
+    background: #fff;
+    color: var(--ink);
+}
+
+/* Outlined button for use on LIGHT backgrounds. */
+.btn--outline-dark {
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
+.btn--outline-dark:hover {
+    background: var(--ink);
+    color: #fff;
+}
+
+/* A row of buttons that wraps nicely on small screens. */
+.btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+/* --- Photo placeholder -----------------------------------------
+   Until we have real photos, these boxes hold their spot in the
+   layout. To swap in a real photo later: replace the whole
+   <div class="photo-placeholder">…</div> with
+   <img src="assets/img/your-photo.jpg" alt="describe the photo">
+   and the layout won't move an inch. */
+.photo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* Subtle diagonal stripes so it reads as "placeholder", not "broken". */
+    background: repeating-linear-gradient(
+        -45deg,
+        #ECECEF 0px,
+        #ECECEF 14px,
+        #F5F5F7 14px,
+        #F5F5F7 28px
+    );
+    color: var(--gray);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+
+/* ============================================================
+   5. HEADER & NAVIGATION
+   ------------------------------------------------------------
+   A sticky CSUN-red bar. On phones: logo + hamburger button that
+   opens a dropdown menu. On desktop (see section 11): the links
+   sit in a row and the hamburger disappears.
+   ============================================================ */
+
+.site-header {
+    position: sticky;      /* stays glued to the top while you scroll */
+    top: 0;
+    z-index: 100;          /* sit above all page content */
+    background: var(--red);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* The inner row: brand on the left, hamburger on the right. */
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-h);
+}
+
+/* Brand = white triangle logo + wordmark, links back to home. */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #fff;
+}
+
+.brand:hover {
+    text-decoration: none;
+}
+
+/* The logo in the red bar. Want it bigger or smaller?
+   This one number is all you change. */
+.brand img {
+    height: 40px;
+    width: auto;
+}
+
+.brand-name {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+/* Tiny "CSUN Sports Club" line under the wordmark. */
+.brand-name small {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    opacity: 0.85;
+}
+
+/* --- Hamburger button (mobile only) --- */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;              /* 44px = Apple's minimum comfy tap target */
+    height: 44px;
+    padding: 10px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+/* The three little bars of the hamburger icon. */
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* When the menu is open (JS adds .is-open to the button),
+   morph the three bars into an X. */
+.hamburger.is-open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.is-open span:nth-child(2) {
+    opacity: 0; /* middle bar fades out */
+}
+
+.hamburger.is-open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- The nav menu itself --- */
+/* On mobile it's a dropdown panel that slides open under the red bar.
+   We animate max-height because you can't animate height:auto. */
+.site-nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: var(--red);
+}
+
+/* JS toggles .is-open on the <nav>. 100vh is "taller than the menu
+   will ever be", which lets the transition work. */
+.site-nav.is-open {
+    max-height: 100vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.site-nav ul {
+    list-style: none;
+    padding: 0.5rem 1.25rem 1.25rem;
+}
+
+.site-nav a {
+    display: block;
+    padding: 0.9rem 0.5rem;
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.05rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.site-nav a:hover {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* The page you're currently on gets a marker so you always know
+   where you are. Each page sets aria-current="page" on its own link. */
+.site-nav a[aria-current="page"] {
+    font-weight: 700;
+    box-shadow: inset 4px 0 0 #fff; /* white bar on the left edge */
+    padding-left: 0.9rem;
+}
+
+/* Store + Pay are external links styled as standout "chips" so they
+   read as actions, not pages. */
+.site-nav a.nav-chip {
+    margin-top: 0.75rem;
+    border: 2px solid #fff;
+    border-radius: 999px;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    border-bottom: 2px solid #fff; /* override the list divider line */
+}
+
+.site-nav a.nav-chip:hover {
+    background: #fff;
+    color: var(--red);
+}
+
+
+/* ============================================================
+   6. HERO SECTIONS
+   ------------------------------------------------------------
+   The big dark banner. The home page gets the full-size version
+   (.hero); inner pages get a shorter strip (.page-hero) with just
+   the page title, so every page still opens with a bold moment.
+   ============================================================ */
+
+.hero {
+    /* Layered backgrounds, listed top-to-bottom:
+       1) a soft red glow coming from the top-left corner
+       2) two thin diagonal red stripes (pure CSS, no images!)
+       3) the solid near-black base color
+
+       The stripes work like this: the linear-gradient is
+       transparent until 68% of the way across, red from 68–70%
+       (that's the thick stripe), transparent again, then a
+       thinner fainter stripe at 74–75.5%. Nudge those
+       percentages to move the stripes; change 115deg to change
+       their angle. Honestly the easiest way to tweak this is to
+       change one number, save, refresh, and eyeball it. */
+    background:
+        radial-gradient(ellipse at top left, rgba(206, 14, 45, 0.28), transparent 55%),
+        linear-gradient(115deg, transparent 0 68%, rgba(206, 14, 45, 0.9) 68% 70%, transparent 70% 74%, rgba(206, 14, 45, 0.55) 74% 75.5%, transparent 75.5%),
+        var(--ink);
+    color: #fff;
+    text-align: center;
+    padding-block: clamp(3.5rem, 10vw, 7rem);
+    overflow: hidden; /* keep the stripes from causing sideways scroll */
+}
+
+/* The white club logo floating above the headline.
+   clamp(minimum, preferred, maximum) — it'll never go below
+   110px (phones) or above 170px (desktops). Change those two
+   numbers to resize it. */
+.hero-logo {
+    width: clamp(110px, 24vw, 170px);
+    margin: 0 auto 1.5rem;
+}
+
+/* THE big headline. Same clamp() idea: never smaller than
+   2.4rem on phones, never bigger than 4.5rem on desktops,
+   and it scales smoothly in between. */
+.hero h1 {
+    font-size: clamp(2.4rem, 9vw, 4.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+/* Red highlight word inside the headline ("JIU-JITSU"). */
+.hero h1 .accent {
+    color: var(--red);
+    /* A hair of white glow so the red pops off the dark background. */
+    text-shadow: 0 0 30px rgba(206, 14, 45, 0.35);
+}
+
+.hero .tagline {
+    margin: 1rem auto 0;
+    max-width: 34rem;
+    font-size: clamp(1rem, 2.8vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hero .btn-row {
+    justify-content: center;
+}
+
+/* --- Smaller hero for inner pages --- */
+.page-hero {
+    background:
+        linear-gradient(115deg, transparent 0 80%, rgba(206, 14, 45, 0.85) 80% 82%, transparent 82% 85%, rgba(206, 14, 45, 0.5) 85% 86.5%, transparent 86.5%),
+        var(--ink);
+    color: #fff;
+    padding-block: clamp(2.25rem, 6vw, 3.5rem);
+}
+
+.page-hero h1 {
+    font-size: clamp(1.9rem, 6vw, 3rem);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.page-hero p {
+    margin-top: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 60ch;
+}
+
+
+/* ============================================================
+   7. CARDS & GRIDS
+   ------------------------------------------------------------
+   The generic card look, plus the grids used on the team,
+   gallery, and highlights sections. All grids use
+   "repeat(auto-fill, minmax(...))" — a neat CSS trick that
+   automatically figures out how many columns fit, so ONE rule
+   works for phones AND desktops with zero media queries.
+   ============================================================ */
+
+.card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.25rem;
+}
+
+/* --- Team page --- */
+/* The 230px = minimum card width. Lower it for more columns,
+   raise it for fewer/wider ones — the grid recalculates itself
+   on every screen size automatically. */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.team-card {
+    text-align: center;
+    /* Red top edge gives the cards a varsity feel. */
+    border-top: 4px solid var(--red);
+}
+
+/* Square headshot area (placeholder now, photo later). */
+.team-card .photo-placeholder,
+.team-card img {
+    aspect-ratio: 1 / 1;       /* always a perfect square */
+    width: 100%;
+    object-fit: cover;         /* real photos will crop to fill, not stretch */
+    border-radius: var(--radius);
+    margin-bottom: 0.9rem;
+}
+
+.team-card h3 {
+    margin: 0 0 0.15rem;
+    font-size: 1.1rem;
+}
+
+/* The person's role, e.g. "President". */
+.team-card .role {
+    color: var(--red);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Extra line for coach lineage notes ("black belt under..."). */
+.team-card .detail {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+/* --- Gallery --- */
+/* 150px minimum tile width = roughly 2 tiles per row on phones,
+   6+ on desktops. Raise the number for bigger, fewer photos. */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.gallery-grid .photo-placeholder,
+.gallery-grid img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+
+/* --- Competition highlights --- */
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.highlight-card {
+    border-top: 4px solid var(--gold);
+}
+
+/* Big medal emoji at the top of each highlight card. */
+.highlight-card .medal {
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.highlight-card h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.05rem;
+}
+
+.highlight-card .meta {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   8. SCHEDULE STYLES
+   ------------------------------------------------------------
+   The heart of the site. ONE set of markup works on all screen
+   sizes (the old site maintained the schedule TWICE — a desktop
+   table and a separate mobile list — which is how schedules get
+   out of sync. Never again).
+
+   Color code, same idea as the old site but consistent:
+     CSUN red tint  = happens ON CAMPUS
+     Forge gold tint = happens AT FORGE
+   ============================================================ */
+
+/* The week: a stack of day cards on phones, a multi-column grid
+   on bigger screens (see section 11). */
+.week-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* One day of the week. */
+.day-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden; /* keeps child corners inside our rounded corners */
+}
+
+/* Day name header (MONDAY, TUESDAY...). */
+.day-card h3 {
+    margin: 0;
+    background: var(--ink);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.6rem;
+}
+
+/* Container for the day's classes. */
+.day-card .day-body {
+    padding: 0.75rem;
+    display: grid;
+    gap: 0.6rem;
+}
+
+/* One class/event. Add .is-csun or .is-forge to color-code it. */
+.class-block {
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    border-left: 4px solid var(--gray);
+    background: var(--paper-alt);
+}
+
+.class-block .class-name {
+    display: block;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.class-block .class-time {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--gray);
+}
+
+/* On-campus classes: CSUN red. */
+.class-block.is-csun {
+    border-left-color: var(--red);
+    background: var(--red-tint);
+}
+
+/* Classes at Forge: their gold. */
+.class-block.is-forge {
+    border-left-color: var(--gold);
+    background: var(--gold-tint);
+}
+
+/* Grayed-out style for rest days. */
+.day-card .no-class {
+    color: var(--gray);
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+/* --- Legend (the "red = campus, gold = Forge" key) --- */
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.9rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+}
+
+/* The little colored dot inside each legend chip. */
+.legend .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    padding: 0;
+    border: 0;
+}
+
+.legend .dot--csun { background: var(--red); }
+.legend .dot--forge { background: var(--gold); }
+
+/* --- "Heads up" notice bar (Fall schedule TBA, etc.) --- */
+.notice {
+    display: block;
+    background: var(--red-tint);
+    border: 1px solid rgba(206, 14, 45, 0.3);
+    border-left: 5px solid var(--red);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin: 1.25rem 0;
+    font-size: 0.95rem;
+    max-width: none; /* let it span full width even though it's a <p> */
+}
+
+/* Location cards on the schedule page. */
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.location-card.is-csun { border-top: 4px solid var(--red); }
+.location-card.is-forge { border-top: 4px solid var(--gold); }
+
+.location-card h3 {
+    margin-top: 0;
+}
+
+.location-card .btn {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    padding: 0.55rem 1.2rem;
+}
+
+
+/* ============================================================
+   9. ANNOUNCEMENT + INSTAGRAM BANDS
+   ------------------------------------------------------------
+   Two attention-grabbing full-width strips used on the home page.
+   ============================================================ */
+
+/* Red gradient banner for club announcements. */
+.announce {
+    background: linear-gradient(120deg, var(--red), var(--red-dark));
+    color: #fff;
+    border-radius: var(--radius);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    box-shadow: var(--shadow);
+}
+
+.announce h2 {
+    margin-bottom: 0.5rem;
+}
+
+.announce p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Instagram band: dark strip with the handle front and center. */
+.insta-band {
+    text-align: center;
+}
+
+.insta-band .handle {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(1.5rem, 5.5vw, 2.6rem);
+    color: #fff;
+    display: inline-block;
+    margin: 0.5rem 0 1rem;
+}
+
+.insta-band .handle:hover {
+    color: var(--red);
+    text-decoration: none;
+}
+
+
+/* ============================================================
+   10. FOOTER
+   ------------------------------------------------------------
+   Dark footer with: club blurb, quick links, contact info, and
+   site credits (who to bug about website updates). Appears on
+   every page — if you edit it, edit it on EVERY html file so
+   they stay in sync.
+   ============================================================ */
+
+.site-footer {
+    background: var(--ink);
+    color: rgba(255, 255, 255, 0.85);
+    padding-block: 3rem 0;
+    margin-top: 0; /* sections above provide their own spacing */
+}
+
+/* Columns stack on mobile, spread out on desktop (section 11). */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+}
+
+.footer-col h4 {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-col a:hover {
+    color: #fff;
+}
+
+/* Logo + one-liner in the first column. */
+.footer-brand img {
+    width: 64px;
+    margin-bottom: 0.75rem;
+}
+
+.footer-brand p {
+    font-size: 0.9rem;
+    max-width: 30ch;
+}
+
+/* Bottom strip: copyright + a thin red top border as a brand accent. */
+.footer-bottom {
+    border-top: 3px solid var(--red);
+    padding: 1.25rem 0;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+
+/* ============================================================
+   11. DESKTOP UPGRADES
+   ------------------------------------------------------------
+   Everything above works on a phone. These @media blocks layer
+   on the roomier layouts once the screen is wide enough.
+   ============================================================ */
+
+/* --- Tablets and up (768px+) --- */
+@media (min-width: 768px) {
+
+    /* Schedule becomes a multi-column week view. auto-fill figures
+       out the column count from available space — the 215px is the
+       minimum width a day card is allowed to shrink to. Want MORE
+       columns? Lower that number. Want fewer, wider columns?
+       Raise it. (Same trick applies to team-grid and gallery-grid.) */
+    .week-grid {
+        grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+    }
+
+    /* Footer columns sit side by side. */
+    .footer-grid {
+        grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+    }
+}
+
+/* --- Desktop nav (900px+) --- */
+@media (min-width: 900px) {
+
+    /* Hide the hamburger — we have room for real links now. */
+    .hamburger {
+        display: none;
+    }
+
+    /* Undo the mobile dropdown: nav is always visible, laid out in a row. */
+    .site-nav {
+        max-height: none;
+        overflow: visible;
+        background: transparent;
+    }
+
+    .site-nav ul {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0;
+    }
+
+    .site-nav a {
+        border-bottom: 0;
+        padding: 0.5rem 0.8rem;
+        font-size: 1rem;
+        border-radius: 6px;
+    }
+
+    /* Current page marker becomes an underline instead of a side bar. */
+    .site-nav a[aria-current="page"] {
+        box-shadow: inset 0 -3px 0 #fff;
+        padding-left: 0.8rem;
+        border-radius: 0;
+    }
+
+    .site-nav a.nav-chip {
+        margin-top: 0;
+        margin-left: 0.5rem;
+        padding: 0.45rem 1.1rem;
+        border-bottom: 2px solid #fff; /* keep the full chip outline */
+    }
+
+    /* Header row now holds brand + nav side by side. */
+    .header-bar {
+        gap: 1rem;
+    }
+}
+
+/* --- Big screens (1100px+): a touch more air in the hero --- */
+@media (min-width: 1100px) {
+    .hero {
+        padding-block: 8rem;
+    }
+}
+
+
+/* ============================================================
+   12. ACCESSIBILITY & SMALL NICETIES
+   ============================================================ */
+
+/* "Skip to content" link: invisible until a keyboard user presses
+   Tab, then it appears so they can jump past the navigation. */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--ink);
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    z-index: 200;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+/* A clear focus ring for keyboard users on ANY interactive element. */
+:focus-visible {
+    outline: 3px solid var(--red);
+    outline-offset: 2px;
+}
+
+/* White ring instead when focused element sits on a red background. */
+.site-header :focus-visible,
+.announce :focus-visible {
+    outline-color: #fff;
+}
+
+/* If someone's device asks for reduced motion (a real accessibility
+   setting), turn off our animations and smooth scrolling. */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}

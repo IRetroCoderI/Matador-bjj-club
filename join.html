@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========================================================
+         MATADOR JIU-JITSU — Join page (join.html)
+         --------------------------------------------------------
+         This page merges the old "Getting Started" and "How to
+         Join" pages into one guided path:
+           1. Start Here (the registration form — the #1 action)
+           2. Why join
+           3. Your first day (what to expect / what to bring)
+           4. Pricing
+           5. Required paperwork (Risk-X, medical, Sports Clubs 101)
+           6. Common questions (FAQ)
+           7. Gear up (Team Store + Pay links)
+
+         ★ QUICK CHEAT SHEET — the edits you'll actually make:
+           • Price change        → find "PRICING" section
+           • New form/PDF links  → find "REQUIRED PAPERWORK"
+             (CSUN re-posts these PDFs every school year)
+           • Add an FAQ          → find "FAQ", copy an <h3> + <p> pair
+           • Sports Clubs 101 date → find "Sports Clubs 101" below
+
+         All the official links (forms, PDFs, Risk-X) are carried
+         over from the old site. If CSUN updates a form URL, this
+         is the file to fix.
+         ======================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Join the Club | Matador Jiu-Jitsu</title>
+
+    <!-- Search-result blurb for this page. -->
+    <meta name="description" content="How to join Matador Jiu-Jitsu, CSUN's Brazilian Jiu-Jitsu club: first-day guide, pricing, registration steps, and required paperwork. No experience needed.">
+    <meta name="theme-color" content="#CE0E2D">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="favicon_io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Keyboard-user shortcut past the nav. -->
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ========================================================
+         HEADER + NAV — same block as every page; this page's own
+         link ("Join") carries the aria-current marker.
+         ======================================================== -->
+    <header class="site-header">
+        <div class="container header-bar">
+            <a class="brand" href="index.html">
+                <img src="assets/img/club-logo-white.svg" alt="Matador Jiu-Jitsu club logo">
+                <span class="brand-name">
+                    Matador Jiu-Jitsu
+                    <small>CSUN Sports Club</small>
+                </span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+            <ul class="container">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="join.html" aria-current="page">Join</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a class="nav-chip" href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/" target="_blank" rel="noopener">Team Store</a></li>
+                <li><a class="nav-chip" href="https://commerce.cashnet.com/csunasorg" target="_blank" rel="noopener">Pay Here</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <!-- Page banner. -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Join the Club</h1>
+                <p>First-timers to black belts — everyone starts the same way. Here's the whole path.</p>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             STEP 1: THE REGISTRATION FORM
+             --------------------------------------------------------
+             The single most important action on this page, so it
+             gets the big red card right up top. If the club ever
+             makes a new Google Form, swap the link in the button.
+             ==================================================== -->
+        <section class="section">
+            <div class="container">
+                <!-- .announce = the red gradient card style. -->
+                <div class="announce">
+                    <span class="kicker">Start Here</span>
+                    <h2>Step 1: Get on the roster</h2>
+                    <p>
+                        Fill out our registration form first — it puts you on the
+                        roster sheet and helps us track memberships, contact
+                        info, and rashguard sizes. Takes about two minutes.
+                    </p>
+                    <div class="btn-row">
+                        <!-- The ↗ arrow is a little visual hint that this
+                             leaves our site. -->
+                        <a class="btn btn--outline" href="./404.html" target="_blank" rel="noopener">Registration Form ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             WHY JOIN — the pitch, carried over from the old
+             "Getting Started" page. Each bullet is one selling
+             point; add or trim bullets freely.
+             ==================================================== -->
+        <section class="section section--alt">
+            <div class="container">
+                <span class="kicker">Why BJJ</span>
+                <h2>Why join?</h2>
+                <p>
+                    Brazilian Jiu-Jitsu is a grappling martial art that uses
+                    leverage and technique to control and submit an opponent —
+                    which is why it works regardless of your size or strength.
+                    It's also one of the fastest-growing sports in the world.
+                    Here's what you get out of it:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Self-defense:</strong> most real altercations end
+                        up on the ground, and BJJ is built for exactly that.
+                        Live sparring ("rolling") builds real muscle memory.
+                    </li>
+                    <li>
+                        <strong>Fitness:</strong> BJJ hits every major muscle
+                        group and doubles as serious cardio — expect better
+                        strength, flexibility, coordination, and balance.
+                    </li>
+                    <li>
+                        <strong>Mental health:</strong> training is a proven
+                        stress-reliever, and watching yourself improve week over
+                        week does wonders for confidence.
+                    </li>
+                    <li>
+                        <strong>Community:</strong> above all, the CSUN club is a
+                        welcoming crew that gives you something to look forward
+                        to after a long day of studying.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             YOUR FIRST DAY — two side-by-side cards. We reuse the
+             .location-grid class here just because it already does
+             exactly what we want: two columns on desktop, stacked
+             on phones.
+             ==================================================== -->
+        <section class="section">
+            <div class="container">
+                <span class="kicker">First Day</span>
+                <h2>Your first practice</h2>
+
+                <div class="location-grid">
+
+                    <!-- CARD: what a first practice actually looks
+                         like, start to finish. Meant to calm nerves —
+                         keep the tone friendly if you edit it. -->
+                    <div class="card location-card is-csun">
+                        <h3>What to expect</h3>
+                        <ul>
+                            <li>Arrive 15 minutes early to sign in and meet the team</li>
+                            <li>Warm-up and stretching</li>
+                            <li>Technique instruction</li>
+                            <li>Light drilling with partners</li>
+                            <li>No sparring until you're comfortable :)</li>
+                        </ul>
+                    </div>
+
+                    <!-- CARD: the packing list. If gear rules change
+                         (e.g. the shorts policy), edit the bullets. -->
+                    <div class="card location-card is-csun">
+                        <h3>What to bring</h3>
+                        <ul>
+                            <li>$20 for the week trial (card or cash)</li>
+                            <li>Athletic-fit shirt or rashguard</li>
+                            <li>Athletic shorts with <strong>no pockets</strong> (basketball shorts are okay for your first 2 weeks)</li>
+                            <li>Flip flops / sandals for off the mat</li>
+                            <li>Mouth guard</li>
+                            <li>Water bottle (recommended)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             PRICING — two cards: full membership + trial.
+             ★ If the price changes: update the <h3> numbers AND
+             re-read the paragraphs so the math still adds up
+             (the trial credit line mentions $160 too).
+             ==================================================== -->
+        <section class="section section--alt">
+            <div class="container">
+                <span class="kicker">Pricing</span>
+                <h2>Membership</h2>
+
+                <div class="location-grid">
+
+                    <!-- CARD: the full semester membership (red top
+                         edge = the "main" option), with the pay button
+                         right inside it. -->
+                    <div class="card location-card is-csun">
+                        <h3>$160 / semester</h3>
+                        <p>
+                            Full club membership — and every membership includes a
+                            club set (rashguard + shorts). We're a no-gi program,
+                            so there's nothing else to buy.
+                        </p>
+                        <a class="btn btn--red" href="https://commerce.cashnet.com/csunasorg" target="_blank" rel="noopener">Pay Dues ↗</a>
+                    </div>
+
+                    <!-- CARD: the trial option (gold top edge just to
+                         visually separate it from the main option). -->
+                    <div class="card location-card is-forge">
+                        <h3>$20 / week trial</h3>
+                        <p>
+                            For your first two weeks (up to 10 classes!) you pay
+                            week to week. If you join, everything you paid during
+                            the trial comes off the $160 membership.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             REQUIRED PAPERWORK — the bureaucratic part, straight
+             from CSUN Sports Clubs. Split into "to try out" vs
+             "to be fully rostered" so it's less overwhelming.
+
+             ⚠️ These links point at CSUN's 2025–26 paperwork.
+             When Sports Clubs posts new-year versions, update the
+             two PDF links below (they're labeled).
+             ==================================================== -->
+        <section class="section">
+            <div class="container">
+                <span class="kicker">Paperwork</span>
+                <h2>Required registration steps</h2>
+
+                <!-- Tier 1: the bare minimum to step on the mat. -->
+                <h3>To attend tryouts or practice</h3>
+                <ul>
+                    <li>
+                        Log in to <a href="https://csun.cfmnetwork.com/saml/csun.saml" target="_blank" rel="noopener">Risk-X</a>
+                        with your CSUN credentials and complete the required forms:
+                        Waiver, Emergency Contact Card, Code of Conduct (Sports
+                        Clubs and California), Academic Release, and PREP (done
+                        once per college career).
+                    </li>
+                    <li>
+                        Forms update in real time — you can even fill them out at
+                        the door of practice and still be cleared to participate.
+                    </li>
+                </ul>
+
+                <!-- Tier 2: the full checklist to be officially rostered. -->
+                <h3>To become a fully rostered member</h3>
+                <ul>
+                    <li>
+                        <!-- ⚠️ The two PDF links below are the ones CSUN
+                             re-posts each school year. -->
+                        <strong>Medical paperwork:</strong>
+                        <a href="https://live-csu-northridge.pantheonsite.io/sites/default/files/2025-07/New%20Participant%20Paperwork%2025-26.pdf" target="_blank" rel="noopener">new participant forms</a>
+                        or
+                        <a href="https://live-csu-northridge.pantheonsite.io/sites/default/files/2025-07/Returning%20Participant%20Paperwork%2025-26.pdf" target="_blank" rel="noopener">returning participant forms</a>.
+                        Print, fill out in blue or black pen, and turn it in
+                        yourself at the
+                        <a href="https://www.csun.edu/as/departments/sport-clubs/athletic-training" target="_blank" rel="noopener">Athletic Training Clinic</a>
+                        (you can't turn in paperwork for another student).
+                    </li>
+                    <li>
+                        <strong>Baseline concussion test:</strong> walk-in at the
+                        Athletic Training Clinic, about 30–40 minutes. Medical
+                        paperwork must be turned in first.
+                    </li>
+                    <li>
+                        <strong>Physical / EKG:</strong> scheduled at the
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Klotz+Student+Health+Center+Northridge" target="_blank" rel="noopener">Klotz Student Health Center</a>
+                        after your medical paperwork is in.
+                    </li>
+                    <li>
+                        <!-- ★ When the Fall 2026 session is announced,
+                             replace this sentence with the real date/time. -->
+                        <strong>Sports Clubs 101:</strong> required once per
+                        college career. The Fall 2026 session date hasn't been
+                        announced yet. BUT we'll post it here and on Instagram.
+                    </li>
+                </ul>
+
+                <!-- Friendly safety net for anyone who gets lost. -->
+                <p class="notice">
+                    Questions about any step? Email
+                    <a href="mailto:jiujitsu@csunas.org">jiujitsu@csunas.org</a>
+                    or DM
+                    <a href="https://www.instagram.com/csunbjjofficial/" target="_blank" rel="noopener">@csunbjjofficial</a>
+                    , we'll be happy to walk you through it.
+                </p>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             FAQ — carried over from the old Getting Started page.
+             ★ To add a question: copy one <h3> + <p> pair and
+             edit. Keep answers short and warm.
+             ==================================================== -->
+        <section class="section section--alt">
+            <div class="container">
+                <span class="kicker">FAQ</span>
+                <h2>Common questions</h2>
+
+                <!-- Q1: the nervous-beginner question. -->
+                <h3>"I've never done martial arts. Can I still join?"</h3>
+                <p>
+                    Yes, of course! We welcome any and all skill levels!
+                    First-timers to black belts.
+                </p>
+
+                <!-- Q2: the gear-cost question. -->
+                <h3>"Do I need to buy a gi (kimono)?"</h3>
+                <p>
+                    Nope! We're strictly a no-gi program, so no purchase is
+                    necessary — and every membership comes with a club set
+                    (rashguard + shorts).
+                </p>
+
+                <!-- Q3: setting expectations about the comp class. -->
+                <h3>"I'm new to the sport. Can I do the competition class?"</h3>
+                <p>
+                    We don't stop beginners from training with competitors, but
+                    keep in mind the competition class is faster-paced and a bit
+                    more advanced. The fundamentals classes are the best place
+                    to start.
+                </p>
+            </div>
+        </section>
+
+        <!-- ====================================================
+             GEAR UP — dark closing band with the store + payment
+             buttons one last time (people who scrolled this far
+             are ready to commit).
+             ==================================================== -->
+        <section class="section section--dark insta-band">
+            <div class="container">
+                <span class="kicker">Gear Up</span>
+                <h2>Rep the club</h2>
+                <p style="margin-inline:auto;">
+                    Grab club merch from the team store, or take care of your
+                    dues online.
+                </p>
+                <!-- justify-content:center overrides the button row's
+                     default left alignment, since this band is centered. -->
+                <div class="btn-row" style="justify-content:center;">
+                    <a class="btn btn--red" href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/" target="_blank" rel="noopener">Team Store ↗</a>
+                    <a class="btn btn--outline" href="https://commerce.cashnet.com/csunasorg" target="_blank" rel="noopener">Pay Dues ↗</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================================
+         FOOTER — same four-column block as every other page.
+         (See index.html for the column-by-column notes.)
+         ======================================================== -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <!-- Column 1: brand. -->
+            <div class="footer-col footer-brand">
+                <img src="assets/img/club-logo-white.svg" alt="Matador Jiu-Jitsu club logo">
+                <p>
+                    The Brazilian Jiu-Jitsu sports club at California State
+                    University, Northridge.
+                </p>
+            </div>
+            <!-- Column 2: site pages. -->
+            <div class="footer-col">
+                <h4>Site</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="join.html">Join</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            <!-- Column 3: club business links. -->
+            <div class="footer-col">
+                <h4>Club</h4>
+                <ul>
+                    <li><a href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/" target="_blank" rel="noopener">Team Store</a></li>
+                    <li><a href="https://commerce.cashnet.com/csunasorg" target="_blank" rel="noopener">Pay Dues</a></li>
+                    <li><a href="https://www.instagram.com/csunbjjofficial/" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="mailto:jiujitsu@csunas.org">jiujitsu@csunas.org</a></li>
+                </ul>
+            </div>
+            <!-- Column 4: website credits + contact for site updates. -->
+            <div class="footer-col">
+                <h4>This Website</h4>
+                <ul>
+                    <li><a href="mailto:jiujitsu@csunas.org">Questions &amp; update requests</a></li>
+                    <li><a href="https://github.com/IRetroCoderI" target="_blank" rel="noopener">GitHub — IRetroCoderI</a></li>
+                    <li><a href="https://www.linkedin.com/in/jesus-ramirez-88846b248/" target="_blank" rel="noopener">LinkedIn — Jesus Ramirez</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                © <span id="year"></span> Matador Jiu-Jitsu · CSUN Sports Club
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

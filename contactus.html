@@ -1,95 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ====================================================
+         REDIRECT STUB — this page moved!
+         The old "contactus" page's content now lives on index.html.
+         We keep this tiny file so old bookmarks and links from
+         Instagram bios / flyers don't hit a dead end — it just
+         forwards visitors to the new page automatically.
+         (The "0" below means "redirect after 0 seconds".)
+         ==================================================== -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matador Jiu-Jitsu | Contact Us</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/svg+xml" href="FreeSample-Vectorizer-io-White and Red-cropped.svg" size="128x128">
+    <meta http-equiv="refresh" content="0; url=index.html">
+    <link rel="canonical" href="https://www.matador-bjj.com/index.html">
+    <title>Moved | Matador Jiu-Jitsu</title>
 </head>
 <body>
-    <div class="mobile-top-bar"></div> <!-- adding a new hamburger menu for mobile users -->
-   
-    <div class="title">
-        <!--TODO: with phone, have csun logo on top -->
-        <div>
-            <p class="t1">Sports Club:</p>
-            <p class="t2">Brazilian Jiu-Jitsu</p>
-        </div>
-        
-        <a href=""><img src="csunLogo.svg"></a>
-    </div>
-    <div class="header">
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu"> <!-- adding hamburger button -->
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        
-        <nav>
-            <ul class="nav" id="nav">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./aboutus.html">About Us</a></li>
-                <li><a href="./meettheofficers.html">Meet the Team</a></li>
-                <li><a href="./gettingstarted.html">Getting Started</a></li>
-                <li><a href="./howtojoin.html">How to Join</a></li>
-                <li><a href="./schedule.html">Schedule & Location</a></li>
-                <li><a href="./contactus.html" class="active">Contact Us</a></li>
-                <li><a href="https://csun-brazilian-jiu-jitsu-club.checkoutstores.com/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnqmkrsX0-yXFvF3qn-MyNasfEJlnlOeIrrKw30xc5VH04ssscxKY7VJScpmM_aem_zvm-UGrD3DYqhWdgyMEnGw" target="_blank">Team Store</a></li>
-                <li><a href="https://commerce.cashnet.com/csunasorg" target="_blank">Pay Here</a></li>
-            </ul>
-        </nav>
-    </div>
-    
-
-    <div class="main-content">
-        <h1>Contact Us</h1>
-        <p>For any questions or concerns, please email us at <a href="mailto:jiujitsu@csunas.org">jiujitsu@csunas.org</a> or send us a DM on our <a href="https://www.instagram.com/csunbjjofficial/?hl=en" target="_blank">Instagram Page</a>.</p>
-    </div>
-    
-    <hr>
-    <footer class="footer">
-        <div class="footer-content">
-        </div>
-    </footer>
-    <script>
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
-
-    console.log('Hamburger:', hamburger); // Debug
-    console.log('Nav:', nav); // Debug
-
-    if (hamburger && nav) {
-        hamburger.addEventListener('click', function() {
-            console.log('Hamburger clicked!'); // Debug
-            this.classList.toggle('active');
-            nav.classList.toggle('active');
-            console.log('Nav classes:', nav.classList); // Debug
-        });
-
-        // Close menu when clicking on a link
-        const navLinks = nav.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const isClickInsideNav = nav.contains(event.target);
-            const isClickOnHamburger = hamburger.contains(event.target);
-            
-            if (!isClickInsideNav && !isClickOnHamburger && nav.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-            }
-        });
-    } else {
-        console.error('Hamburger or Nav not found!');
-    }
-    </script>
+    <!-- Fallback link, in case a very old browser ignores the redirect. -->
+    <p>This page has moved — <a href="index.html">click here if you're not redirected</a>.</p>
 </body>
 </html>
