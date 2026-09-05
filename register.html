@@ -19,6 +19,24 @@
     var test;
 
     function init() {
+        test = document.getElementById("testing");
+        test.innerHTML = "<h1>Hello World TESTING</h1>";
+
+        form = document.getElementById("form");
+
+        form.addEventListener("reset",
+            function() {
+                return confirm("Are you sure you want to reset your responses?")
+            }
+        );
+
+        // TODO: 
+        form.addEventListener("submit",
+            function() {
+                return confirm("Confirm Responses?")
+            }
+        );
+
 
     }
 
@@ -69,28 +87,40 @@
         <section class="section">
             <div class="container">
                 <span class="kicker">Kicker Small text</span>
-                <h2>large h2 text</h2>
+                <h2>Make it Official.</h2>
+
+            <div id="testing">
+
+            </div>
             
 
             <form action="www.example.com" method="post" id="form">
-                <h3>Full Name 
-                    <small>(As appears on Student ID)</small>
-                </h3>
-                    <input type="text">
 
-                <h3>CSUN.edu Email Address</h3>
-                    <input type="email">
+                <p>
+                    <h3>Full Name <small>(As appears on Student ID)</small></h3>
+                    <input type="text" id="full_name" placeholder="John Smith Gracie" required>
+                </p>
 
-                <h3>Confirm CSUN.edu Email Address</h3>
-                    <input type="email">
+                <p>
+                    <h3>CSUN.edu Email Address</h3>
+                    <input type="email"  id="email" required placeholder="john.gracie.123@my.csun.edu">
 
-                <h3>CSUN Student ID Number</h3>
-                    <input type="number">
+                    <h3>Confirm CSUN.edu Email Address</h3>
+                    <input type="email" id="email_confirmed" placeholder="john.gracie.123@my.csun.edu" required>
+                </p>
 
-                <h3>Confirm CSUN Student ID Number</h3>
-                    <input type="number">
+                <p>
+                    <h3>CSUN Student ID Number</h3>
+                    <input type="number" required placeholder="123456789">
+                </p>
 
-                <h3>Select Belt Level</h3>
+                <p>
+                    <h3>Confirm CSUN Student ID Number</h3>
+                    <input type="number" required placeholder="123456789">
+                </p>
+
+                <p>
+                    <h3>Select Belt Level</h3>
                     <input type="radio" id="white" name="belt">
                     <label for="white">White Belt</label>
 
@@ -105,10 +135,13 @@
 
                     <input type="radio" id="black" name="belt">
                     <label for="black">Black Belt</label>
-                <br>
-                <input type="submit">
-                <input type="reset">
-                
+                    <br>
+                    
+                </p>
+                    <!--submission buttons-->
+                    <input type="submit">
+                    <input type="reset">
+                </p>
             </form>
 
             <small>

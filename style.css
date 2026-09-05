@@ -983,6 +983,7 @@ h1, h2, h3, h4 {
 }
 
 
+
 /* ============================================================
    11. DESKTOP UPGRADES
    ------------------------------------------------------------
@@ -1109,4 +1110,14 @@ h1, h2, h3, h4 {
     *::after {
         transition: none !important;
     }
+}
+
+/* Form Bullshit, may have to recreate for phones/mobile */
+input[type=text], input[type=email] {
+    width: 300px;
+}
+
+input[type=submit], input[type=reset]{
+    width: 100px;
+    height: 25px;
 }
